@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+/* 
+  font-family: 'Roboto', sans-serif; 
+*/
+@import url("https://fonts.googleapis.com/css2?family=Glory:ital@1&display=swap");
+/* 
+  font-family: 'Glory', sans-serif;
+*/
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", "Glory", -apple-system, BlinkMacSystemFont, Segoe UI,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+  font-size: inherit;
+}
+
+.italic {
+  font-family: "Glory", sans-serif;
+}
+
+.fs13px {
+  font-size: 13px;
+}
