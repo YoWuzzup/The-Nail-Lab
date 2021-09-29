@@ -35,3 +35,19 @@ a {
 .fs13px {
   font-size: 13px;
 }
+
+.mainPictureDiv {
+  height: 35vh;
+}
+
+@media (min-width: 600px) {
+  .mainPictureDiv {
+    height: 45vh;
+  }
+}
+
+@media (min-width: 950px) {
+  .mainPictureDiv {
+    height: 75vh;
+  }
+}

@@ -1,0 +1,1 @@
+export { default as mainPicture } from './Home/mainpicture.webp'
