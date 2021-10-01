@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { MainPicture } from "../components";
+import { MainPicture, WelcomeBlock } from "../components";
 
 export default function Home() {
   return (
@@ -11,6 +11,7 @@ export default function Home() {
       </Head>
 
       <MainPicture />
+      <WelcomeBlock />
     </>
   );
 }

@@ -1,4 +1,3 @@
-import React from "react";
 import { mainPicture } from "../../images";
 import { AllHeaders } from "..";
 
@@ -12,6 +11,7 @@ export default function MainPicture() {
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed",
       }}
       className={`mainPictureDiv`}
     >

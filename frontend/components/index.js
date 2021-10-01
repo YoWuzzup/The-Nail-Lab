@@ -1,4 +1,5 @@
 export { default as MainPicture } from './Home/MainPicture.jsx'
+export { default as WelcomeBlock } from './Home/WelcomeBlock.jsx'
 
 
 
