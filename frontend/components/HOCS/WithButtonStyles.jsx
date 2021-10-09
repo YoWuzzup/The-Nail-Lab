@@ -10,7 +10,7 @@ const styles = {
     fontSize: "inherit",
     margin: "0 25px",
     padding: "0",
-    borderRadius: '0',
+    borderRadius: "0",
     width: "130px",
     height: "35px",
     color: "#fff",
@@ -22,10 +22,10 @@ const styles = {
   },
 };
 
-function WithButtonStyles({ classes, name, url }) {
+function WithButtonStyles({ type, classes, name, url }) {
   return (
     <Link href={`/${url}`} underline="none">
-      <Button className={classes.root} disableRipple disableFocusRipple>
+      <Button className={classes.root} disableRipple disableFocusRipple >
         {name}
       </Button>
     </Link>

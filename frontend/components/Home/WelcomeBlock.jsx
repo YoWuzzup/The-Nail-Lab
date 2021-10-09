@@ -7,7 +7,7 @@ export default function WelcomeBlock() {
   return (
     <div className={classes.root}>
       <div
-        className={classes.handImage_container}
+        className={classes.handImage}
         style={{ backgroundImage: `url(${mainHand.src})` }}
       />
 
@@ -32,7 +32,10 @@ export default function WelcomeBlock() {
         </p>
       </div>
 
-      <img alt="marshmellow" src={`${mainMarshmellow.src}`} />
+      <div
+        className={classes.marshmellowImage}
+        style={{ backgroundImage: `url(${mainMarshmellow.src})` }}
+      />
     </div>
   );
 }
