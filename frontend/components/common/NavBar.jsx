@@ -121,12 +121,14 @@ export default function NavBar() {
           <a href="tel:555-555-5555" className={classes.phone}>
             CALL US: 555-555-5555
           </a>
-
-          <WithButtonStyles
-            name={"book now"}
-            url="treatments"
-            classes={classes.booknow}
-          />
+          
+          <div style={{ width: "130px", height: "35px" }}>
+            <WithButtonStyles
+              name={"book now"}
+              url="treatments"
+              classes={classes.booknow}
+            />
+          </div>
 
           <ToggleMenuButton
             activeMenu={activeMenu}

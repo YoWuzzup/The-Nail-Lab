@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import { NavBar } from "../components/index";
+import { NavBar, Footer } from "../components/index";
 import { ThemeProvider, createTheme } from '@material-ui/core/styles';
 
 const theme = createTheme({
@@ -22,6 +22,7 @@ export default function MyApp({ Component, pageProps }) {
       <ThemeProvider theme={theme}>
         <NavBar />
         <Component {...pageProps} />
+        <Footer />
       </ThemeProvider>
     </>
   );

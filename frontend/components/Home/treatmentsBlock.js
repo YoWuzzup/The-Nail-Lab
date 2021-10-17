@@ -11,7 +11,10 @@ export const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     backgroundPosition: "center",
-    paddingBottom: '700px'
+    paddingBottom: "700px",
+    [theme.breakpoints.down("sm")]: {
+      paddingBottom: "50px",
+    },
   },
   header: {
     margin: "115px auto 115px",
@@ -28,5 +31,12 @@ export const useStyles = makeStyles((theme) => ({
     alignContent: "center",
     flexFlow: "row nowrap",
     margin: "0 0 80px",
+    [theme.breakpoints.down("md")]: {
+      width: "90%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      flexFlow: "column",
+      margin: '0'
+    },
   },
 }));

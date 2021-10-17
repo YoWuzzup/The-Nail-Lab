@@ -7,7 +7,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#fff",
     display: "flex",
     flexFlow: "column",
-    justifyContent: "flex-end",
+    justifyContent: "space-between",
+    [theme.breakpoints.down("sm")]: {
+      flexBasis: '100%',
+      width: '100%',
+      margin: '0 0 50px'
+    },
   },
   treatment_header: {
     color: "#333",
@@ -16,7 +21,11 @@ const useStyles = makeStyles((theme) => ({
     transform: "translateY(-20%)",
     width: "80%",
     margin: "0 auto",
-    whiteSpace: "pre-wrap"
+    whiteSpace: "pre-wrap",
+    [theme.breakpoints.down('lg')]:{
+    fontSize: "50px",
+
+    }
   },
   treatment_image: {
     width: "100%",

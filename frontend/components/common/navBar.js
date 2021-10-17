@@ -32,6 +32,7 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexFlow: "row nowrap",
     flexBasis: "35%",
+    gap: '5%',
     justifyContent: "center",
     alignContent: "center",
     alignItems: "center",
@@ -66,7 +67,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   phone: {
     [theme.breakpoints.down("sm")]: {
-      margin: "0 0 10px 25px",
+      margin: "0 0 10px 0",
       flexBasis: "70%",
     },
   },

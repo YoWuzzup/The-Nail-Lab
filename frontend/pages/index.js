@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { MainPicture, WelcomeBlock, TreatmentsBlock } from "../components";
+import { MainPicture, WelcomeBlock, TreatmentsBlock, FollowBlock } from "../components";
 
 export default function Home() {
   return (
@@ -13,6 +13,7 @@ export default function Home() {
       <MainPicture />
       <WelcomeBlock />
       <TreatmentsBlock />
+      <FollowBlock />
     </>
   );
 }
