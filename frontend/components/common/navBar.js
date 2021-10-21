@@ -8,8 +8,7 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     boxShadow: "none",
     width: "100%",
-    height: "84px",
-    gap: "60px",
+    padding: '15px 0 100px'
   },
   menuList: {
     display: "flex",

@@ -22,6 +22,11 @@ body {
   font-size: 14px;
 }
 
+.wrapper {
+  width: 60%;
+  margin: 0 auto;
+}
+
 a {
   text-decoration: none;
   color: #000;
@@ -30,6 +35,7 @@ a {
 
 .italic {
   font-family: "Glory", sans-serif;
+  font-weight: 400;
 }
 
 .fs13px {

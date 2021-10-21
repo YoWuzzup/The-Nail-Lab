@@ -7,7 +7,6 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     alignContent: "center",
-    padding: "75px 0 0",
   },
   inner: {
     whiteSpace: "pre-wrap",

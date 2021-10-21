@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: "pre-wrap",
     [theme.breakpoints.down('lg')]:{
     fontSize: "50px",
-
     }
   },
   treatment_image: {

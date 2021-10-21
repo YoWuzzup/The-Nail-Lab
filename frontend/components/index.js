@@ -1,3 +1,8 @@
+// Contact
+export { default as MainInfo } from './Contact/MainInfo.jsx'
+export { default as MyGoogleMap } from './Contact/MyGoogleMap.jsx'
+
+// Home
 export { default as MainPicture } from './Home/MainPicture.jsx'
 export { default as WelcomeBlock } from './Home/WelcomeBlock.jsx'
 export { default as TreatmentsBlock } from './Home/TreatmentsBlock.jsx'
