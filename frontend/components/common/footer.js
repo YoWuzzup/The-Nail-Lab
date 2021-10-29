@@ -10,7 +10,7 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     alignContent: "flex-start",
     backgroundColor: "#fff4ec",
-    padding: "50px 0 0",
+    padding: "50px 0 100px",
     [theme.breakpoints.down('xs')]:{
       flexFlow: 'column',
       justifyContent: 'flex-start',

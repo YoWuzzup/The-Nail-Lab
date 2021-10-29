@@ -8,5 +8,11 @@ export { default as icecream } from './Home/icecream.webp'
 export { default as lemons } from './Home/lemons.webp'
 export { default as stem } from './Home/stem.webp'
 
+// Lab
+export { default as hands } from './Lab/hands.webp'
+export { default as apple } from './Lab/apple.webp'
+export { default as mamell } from './Lab/mamell.webp'
+
+
 // Contact
 export { default as cottoncandy } from './Contact/cottoncandy.webp'

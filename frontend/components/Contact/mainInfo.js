@@ -4,13 +4,11 @@ export const useStyles = makeStyles((theme) => ({
   root: {
     display: "grid",
     gridTemplateColumns: "repeat(8, 1fr)",
-    gridTemplateRows: "repeat(4, 1fr)",
+    gridTemplateRows: "repeat(2, 1fr)",
     gap: "0% 0%",
     gridTemplateAreas: ` 
       "header header header header para para para para"
-      "header header header header para para para para"
-      "header header header header address address hours hours"
-      "header header header header address address hours hours"`,
+      "header header header header para para para para"`,
     justifyContent: "stretch",
     alignContent: "stretch",
     justifyItems: "stretch",
@@ -63,56 +61,6 @@ export const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       margin: "0 0 50px 20px",
       width: "80%",
-    },
-  },
-  address: {
-    gridArea: "address",
-  },
-  hours: {
-    gridArea: "hours",
-  },
-  blocks: {
-    flexBasis: "13%",
-    display: "flex",
-    flexFlow: "column",
-    minHeight: "90px",
-    "& > *": {
-      fontSize: "16px",
-      color: "#333",
-      width: "100%",
-    },
-    [theme.breakpoints.down("lg")]: {
-      margin: "0 5px 0 0",
-    },
-    [theme.breakpoints.down("md")]: {
-      margin: "0 0 50px 50px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      margin: "0 0 0 20px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      margin: "0 0 20px 20px",
-    },
-  },
-  headers: {
-    fontSize: "18px",
-    textDecoration: "upper-case",
-    fontWeight: "400",
-    margin: "0 0 20px",
-  },
-  imageDiv: {
-    width: "60%",
-    height: "auto",
-    minHeight: "400px",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    backgroundPosition: "center center",
-    margin: "0 auto",
-    [theme.breakpoints.down("md")]: {
-      width: "80%",
-    },
-    [theme.breakpoints.down("sm")]: {
-      width: "95%",
     },
   },
 }));

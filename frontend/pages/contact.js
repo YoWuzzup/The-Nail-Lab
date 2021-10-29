@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { MainInfo, MyGoogleMap } from "../components";
+import { MainInfo, ContactInfo, MyGoogleMap } from "../components";
 
 export default function Contact() {
   return (
@@ -9,7 +9,9 @@ export default function Contact() {
       </Head>
 
       <div style={{ width: "100%", backgroundColor: "#ffe4d4" }}>
-        <MainInfo header={"Contact Us"} />
+        <MainInfo header={"Contact Us"}>
+          <ContactInfo />
+        </MainInfo>
 
         <MyGoogleMap />
       </div>

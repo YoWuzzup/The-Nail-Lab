@@ -35,7 +35,7 @@ export default function FollowBlock() {
           className={`${classes.images} ${classes.banana}`}
           style={{ backgroundImage: `url(${banana.src})` }}
         />
-        <Link href={`https://www.instagram.com/yowuzzupla/`}>
+        <Link href={`/contact`}>
           <div className={`${classes.images} ${classes.touch}`}>
             <div className={classes.touch_inner}>
               Get in <br /> Touch

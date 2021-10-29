@@ -25,7 +25,7 @@ const styles = {
 function WithButtonStyles({ type, classes, name, url }) {
   return (
     <Link href={`/${url}`} underline="none">
-      <Button className={classes.root} disableRipple disableFocusRipple >
+      <Button className={classes.root} disableRipple disableFocusRipple>
         {name}
       </Button>
     </Link>
