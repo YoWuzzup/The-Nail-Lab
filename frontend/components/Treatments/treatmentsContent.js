@@ -1,0 +1,62 @@
+import { makeStyles } from "@material-ui/core/styles";
+
+export const useStyles = makeStyles((theme) => ({
+  root: {
+    width: "60%",
+    margin: "100px auto 0",
+    display: "flex",
+    flexFlow: "column",
+    [theme.breakpoints.down("xs")]: {
+      width: "90%",
+    },
+  },
+  sorting: {
+    width: "100%",
+    margin: "0 0 60px",
+    display: "flex",
+    flexFlow: "row nowrap",
+    alignContent: "center",
+    justifyContent: "center",
+    alignItems: "center",
+    [theme.breakpoints.down("sm")]: {
+      flexFlow: "row wrap",
+    },
+  },
+  sorting_button: {
+    padding: "10px",
+    fontSize: "16px",
+    textTransform: "uppercase",
+    flexBasis: "15%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    borderBottom: "1px solid #c4b4ac",
+    cursor: "pointer",
+    "&:hover": {
+      borderBottom: "3px solid #a48c74",
+    },
+    [theme.breakpoints.down("lg")]: {
+      flexBasis: "20%",
+    },
+    [theme.breakpoints.down("md")]: {
+      flexBasis: "25%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      flexBasis: "35%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      flexBasis: "50%",
+    },
+  },
+  service_block: {
+    display: "flex",
+    flexFlow: "row",
+    justifyContent: "space-around",
+    alignContent: "center",
+    gap: "2%",
+    margin: "0 0 120px",
+    [theme.breakpoints.down("sm")]: {
+      flexFlow: "column",
+    },
+  },
+}));
