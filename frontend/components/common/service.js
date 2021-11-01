@@ -17,6 +17,8 @@ export const useStyles = makeStyles((theme) => ({
     minHeight: "200px",
     display: "block",
     margin: "0 auto 50px",
+    cursor: 'pointer',
+    position: 'relative',
   },
   info: {
     display: "flex",
@@ -31,15 +33,18 @@ export const useStyles = makeStyles((theme) => ({
     textTransform: "capitalize",
     transition: "all linear .3s",
     margin: "0 auto 25px",
+    cursor: 'pointer',
     "&:hover": {
-      opacity: ".3",
+      opacity: ".5",
     },
   },
   duration: {
     margin: "0 auto 25px",
+    fontSize: '16px'
   },
   cost: {
     margin: "0 auto 25px",
+    fontSize: '16px'
   },
   button: {
     width: "130px",

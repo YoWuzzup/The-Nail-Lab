@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { MainInfo, TreatmentsContent } from "../components";
+import { MainInfo, TreatmentsContent } from "../../components";
 
 export default function treatments() {
   return (

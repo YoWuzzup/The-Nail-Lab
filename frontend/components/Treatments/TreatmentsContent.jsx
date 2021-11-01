@@ -1,31 +1,37 @@
+import { useEffect } from "react";
 import { Service } from "../";
 import { useStyles } from "./treatmentsContent";
 import { useDispatch, useSelector } from "react-redux";
 import { changeSortingButton } from "../../Redux/Actions/Buttons";
+import { getService } from "../../Redux/Actions/Service";
 
 export default function TreatmentsContent() {
   const dispatch = useDispatch();
   const activeSortingButton = useSelector((state) => state.sortingButton);
+  const fetchedService = useSelector((state) => state.service);
   const classes = useStyles();
   const sortingInfo = ["manicure", "pedicure", "get polish", "nail art"];
 
   const handleClick = (e) => {
     dispatch(changeSortingButton(e.target.textContent));
   };
-  const dummyService = [1, 2, 3];
+
+  useEffect(() => {
+    dispatch(getService(activeSortingButton));
+  }, [activeSortingButton]);
 
   return (
     <div className={`${classes.root}`}>
       <div className={`${classes.sorting}`}>
         {sortingInfo.map((item, index) => (
           <div
+            onClick={handleClick}
             className={`${classes.sorting_button} ${
               item.includes(activeSortingButton)
                 ? classes.sorting_button_active
                 : ""
             }`}
             key={`${item}_${index}`}
-            onClick={handleClick}
           >
             {item}
           </div>
@@ -33,8 +39,8 @@ export default function TreatmentsContent() {
       </div>
 
       <div className={`${classes.service_block}`}>
-        {dummyService.map((item, index) => (
-          <Service key={`${item}_${index}`} />
+        {fetchedService.map((item, index) => (
+          <Service key={`${item}_${index}`} data={item} />
         ))}
       </div>
     </div>

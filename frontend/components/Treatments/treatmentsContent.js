@@ -51,11 +51,11 @@ export const useStyles = makeStyles((theme) => ({
   },
   service_block: {
     display: "flex",
-    flexFlow: "row",
+    flexFlow: "row wrap",
     justifyContent: "space-around",
     alignContent: "center",
     gap: "2%",
-    margin: "0 0 120px",
+    margin: "0 auto 120px",
     [theme.breakpoints.down("sm")]: {
       flexFlow: "column",
     },
