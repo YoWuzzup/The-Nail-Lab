@@ -1,22 +1,10 @@
 import "../styles/globals.css";
+import { ThemeProvider } from "@material-ui/core/styles";
+import theme from '../styles/theme'
 import { NavBar, Footer } from "../components/index";
-import { ThemeProvider, createTheme } from '@material-ui/core/styles';
+import { wrapper } from "../Redux/wrapper";
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#ffe3d8'
-    },
-    secondary: {
-      main: '#19857b',
-    },
-    error: {
-      main: '#19857b',
-    },
-  },
-});
-
-export default function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }) {
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -27,3 +15,5 @@ export default function MyApp({ Component, pageProps }) {
     </>
   );
 }
+
+export default wrapper.withRedux(MyApp);

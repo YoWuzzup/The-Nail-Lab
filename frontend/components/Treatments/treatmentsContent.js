@@ -32,9 +32,7 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     borderBottom: "1px solid #c4b4ac",
     cursor: "pointer",
-    "&:hover": {
-      borderBottom: "3px solid #a48c74",
-    },
+    transition: "all .4s ease-in-out",
     [theme.breakpoints.down("lg")]: {
       flexBasis: "20%",
     },
@@ -47,6 +45,9 @@ export const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       flexBasis: "50%",
     },
+  },
+  sorting_button_active: {
+    borderBottom: "3px solid #a48c74",
   },
   service_block: {
     display: "flex",

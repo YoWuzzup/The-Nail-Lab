@@ -8,7 +8,7 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     boxShadow: "none",
     width: "100%",
-    padding: '15px 0 100px'
+    padding: "15px 0 100px",
   },
   menuList: {
     display: "flex",
@@ -31,7 +31,7 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexFlow: "row nowrap",
     flexBasis: "35%",
-    gap: '5%',
+    gap: "5%",
     justifyContent: "center",
     alignContent: "center",
     alignItems: "center",
@@ -55,6 +55,10 @@ export const useStyles = makeStyles((theme) => ({
       color: "#fff",
       backgroundColor: "unset",
     },
+  },
+  activeMenuItem: {
+      color: "#ae967e",
+      textTransform: "uppercase",
   },
   menuItemSided: {
     margin: "0 10px",

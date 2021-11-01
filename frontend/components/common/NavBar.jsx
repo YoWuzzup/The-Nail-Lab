@@ -4,6 +4,8 @@ import { AppBar, MenuList, MenuItem, IconButton } from "@material-ui/core";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import { WithButtonStyles } from "../index";
 import { useStyles } from "./navBar";
+import { useDispatch, useSelector } from "react-redux";
+import { changeNavButton } from "../../Redux/Actions/Buttons";
 
 const btns = [
   { name: "home", url: "" },
@@ -13,25 +15,36 @@ const btns = [
   { name: "contact us", url: "contact" },
 ];
 
-function MainMenuList({ activeMenu, setActiveMenu }) {
+function MainMenuList({ activeMenu, setActiveMenu, navigationButton }) {
+  const dispatch = useDispatch();
   const classes = useStyles();
 
-  const handleCloseMenu = (e) => {
+  const handleCloseMenu = (e, name) => {
+    let newName =
+      e.target.textContent.split(" ").join("") === name.split(" ").join("")
+        ? name.split(" ").join("")
+        : "home";
     setActiveMenu(false);
+    dispatch(changeNavButton(newName));
   };
 
   return (
     <MenuList className={activeMenu ? classes.menuListSided : classes.menuList}>
       {btns &&
         btns.map((item, index) => {
+          let newName = item.name.split(" ").join("");
+
           return (
             <Link href={`/${item.url}`} key={`${item.name}_${index}`}>
               <MenuItem
                 disableGutters={true}
                 className={`${
                   activeMenu ? classes.menuItemSided : classes.menuItem
+                } ${
+                  newName === navigationButton ? classes.activeMenuItem : ""
                 } fs13px`}
-                onClick={handleCloseMenu}
+                onClick={(e) => handleCloseMenu(e, item.name)}
+                name={item.name}
               >
                 {item.name}
               </MenuItem>
@@ -102,6 +115,7 @@ function LogInButton({ activeMenu }) {
 export default function NavBar() {
   const classes = useStyles();
   const [activeMenu, setActiveMenu] = useState(false);
+  const navigationButton = useSelector((state) => state.navigationButton);
 
   const handleMenuClick = () => {
     setActiveMenu(!activeMenu);
@@ -115,13 +129,16 @@ export default function NavBar() {
         color="primary"
         position="static"
       >
-        <MainMenuList setActiveMenu={setActiveMenu} />
+        <MainMenuList
+          setActiveMenu={setActiveMenu}
+          navigationButton={navigationButton}
+        />
 
         <div className={classes.buttons}>
           <a href="tel:555-555-5555" className={classes.phone}>
             CALL US: 555-555-5555
           </a>
-          
+
           <div style={{ width: "130px", height: "35px" }}>
             <WithButtonStyles
               name={"book now"}
