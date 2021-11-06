@@ -15,12 +15,13 @@ export const useStyles = makeStyles((theme) => ({
     border: "1px solid #000",
     position: "fixed",
     right: "250px",
-    // [theme.breakpoints.down("md")]: {
-    //   width: "80%",
-    // },
-    // [theme.breakpoints.down("sm")]: {
-    //   width: "100%",
-    // },
+    [theme.breakpoints.down("lg")]: {
+      right: "100px",
+    },
+    [theme.breakpoints.down("md")]: {
+      position: "static",
+      margin: "0 auto 50px",
+    },
   },
   name: {
     flexBasis: "80%",

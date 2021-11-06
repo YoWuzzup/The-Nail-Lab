@@ -83,8 +83,7 @@ export const newOverrides = {
   },
   AvailSlot: {
     style: {
-      width: "190px",
-      height: "39px",
+      minWidth: "100px",
       backgroundColor: "unset",
       cursor: "pointer",
       fontSize: "16px",

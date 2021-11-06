@@ -73,6 +73,8 @@ a {
   align-items: center;
   justify-content: center;
   flex-flow: row wrap;
+  width: 190px;
+  height: 39px;
 }
 
 .availSlot:hover {
@@ -98,5 +100,11 @@ a {
 @media (min-width: 950px) {
   .mainPictureDiv {
     height: 75vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .availSlot {
+    width: 50px;
   }
 }
