@@ -6,6 +6,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 import { ServiceModule } from './service/service.module';
+import { StaffModule } from './staff/staff.module';
+import { BookingModule } from './booking/booking.module';
 
 @Module({
   imports: [
@@ -22,6 +24,8 @@ import { ServiceModule } from './service/service.module';
       inject: [ConfigService],
     }),
     ServiceModule,
+    StaffModule,
+    BookingModule,
   ],
   controllers: [AppController],
   providers: [AppService],

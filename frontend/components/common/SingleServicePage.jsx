@@ -9,19 +9,7 @@ export default function SingleServicePage({ name }) {
   const dispatch = useDispatch();
   const service = useSelector((state) => state.singleService);
   const classes = useStyles();
-  const dummyImage =
-    "https://static.wixstatic.com/media/c06ad52634dc4421aecebcf2aecbdb98.jpg/v1/fill/w_980,h_606,al_c,q_85,usm_0.66_1.00_0.01/c06ad52634dc4421aecebcf2aecbdb98.webp";
-  const dummyDesc = [
-    {
-      n: "Describe your service here. What makes it great? Use short catchy text to tell people what you offer, and the benefits they will receive. A great description gets readers in the mood, and makes them more likely to go ahead and book.",
-    },
-    {
-      n: "Describe your service here. What makes it great? Use short catchy text to tell people what you offer, and the benefits they will receive. A great description gets readers in the mood, and makes them more likely to go ahead and book.",
-    },
-    {
-      n: "Describe your service here. What makes it great? Use short catchy text to tell people what you offer, and the benefits they will receive. A great description gets readers in the mood, and makes them more likely to go ahead and book.",
-    },
-  ];
+
   useEffect(() => {
     dispatch(getSingleService(name));
   }, [name]);
@@ -45,7 +33,7 @@ export default function SingleServicePage({ name }) {
 
       <img
         className={`${classes.image}`}
-        alt={`as`}
+        alt={`${service[0]?.name}`}
         src={`${service[0]?.image}`}
       />
 

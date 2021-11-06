@@ -26,3 +26,20 @@ export const fetchSingleService = async (name) => {
     console.log(`There's no such post with name: ${name}.`);
   }
 };
+
+// fetching technicians
+export const fetchTechnicians = async () => {
+  try {
+    return axios.get(`${url}technicians`);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchSingleTechnician = async (id) => {
+  try {
+    return axios.get(`${url}technicians/${id}`);
+  } catch (error) {
+    console.log(error);
+  }
+};

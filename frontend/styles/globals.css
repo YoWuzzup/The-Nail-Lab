@@ -46,6 +46,49 @@ a {
   height: 35vh;
 }
 
+/* calendar navigation buttons */
+.btn-group > *:not(.btn-link):hover {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+.btn-group .btn:nth-child(2) {
+  order: 1 !important;
+}
+
+.btn-link {
+  outline: none;
+  background-color: none;
+  border: none;
+  order: 1;
+  font-size: 16px;
+  color: #000;
+}
+
+.availSlot {
+  border: 1px solid #000;
+  align-self: center;
+  display: flex;
+  margin: 0 auto 0;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row wrap;
+}
+
+.availSlot:hover {
+  border-color: #9cbcc4;
+  color: #9cbcc4;
+}
+
+.close {
+  display: none;
+}
+
+.rounded-circle:hover {
+  box-shadow: inset 0 0 10px #9cbcc4;
+}
+/* calendar navigation buttons */
+
 @media (min-width: 600px) {
   .mainPictureDiv {
     height: 45vh;
