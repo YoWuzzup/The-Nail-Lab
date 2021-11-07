@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { CheckoutContent } from "../components";
+import { CheckoutContent } from "../../components";
 
 export default function checkout() {
   return (

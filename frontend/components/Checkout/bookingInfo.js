@@ -45,10 +45,15 @@ export const useStyles = makeStyles((theme) => ({
   },
   chosenDate: {
     flexBasis: "80%",
-    margin: "0 auto 35px",
+    margin: "0 auto 15px",
+  },
+  staff: {
+    flexBasis: "80%",
+    margin: "0 auto 15px",
   },
   btn: {
     width: "210px",
     height: "49px",
+    margin: "0 auto 20px",
   },
 }));

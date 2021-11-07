@@ -1,13 +1,24 @@
 import { useStyles } from "./service";
 import Link from "next/link";
 import { WithButtonStyles } from "../index";
+import { getCheckoutService } from "../../Redux/Actions/CheckoutService";
+import { useDispatch } from "react-redux";
 
 export default function Service({ data }) {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const url = data.name;
-  // data.name.includes(" ")
-  // ? data.name.split(" ").join("")
-  // : 
+
+  const handleClick = (e) => {
+    dispatch(
+      getCheckoutService({
+        name: data.name,
+        cost: data.cost,
+        duration: data.duration,
+      })
+    );
+  };
+
   return (
     <div className={`${classes.root}`}>
       <Link href={`/treatments/${url}`}>
@@ -26,7 +37,7 @@ export default function Service({ data }) {
         <div className={`${classes.duration}`}>{data.duration} min</div>
         <div className={`${classes.cost}`}>${data.cost}</div>
 
-        <div className={`${classes.button}`}>
+        <div className={`${classes.button}`} onClick={handleClick}>
           <WithButtonStyles name={"book it"} url="checkout" />
         </div>
       </div>

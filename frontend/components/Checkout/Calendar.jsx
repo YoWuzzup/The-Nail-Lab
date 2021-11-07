@@ -9,6 +9,8 @@ import {
   Overrides,
 } from "react-availability-calendar";
 import moment from "moment";
+import { getCheckoutService } from "../../Redux/Actions/CheckoutService";
+import { useDispatch, useSelector } from "react-redux";
 
 // styles
 import { useStyles, newOverrides } from "./calendar";
@@ -17,6 +19,8 @@ const msInHour = 60 * 60 * 1000;
 const providerTimeZone = "Europe/Warsaw";
 
 export default function Calendar() {
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.checkoutService);
   const now = new Date();
   const classes = useStyles();
   const [bookings, setBookings] = useState([
@@ -30,9 +34,19 @@ export default function Calendar() {
     },
   ]);
 
-  const onAvailabilitySelected = (a) =>
-    console.log("Availability slot selected: ", a);
+  const handleChange = (e) => {
+    dispatch(getCheckoutService({ staff: e.target.value }));
+  };
 
+  // on clicking on the available time
+  const onAvailabilitySelected = (a) => {
+    let newEndDate = moment(a.startDate).add(data?.duration, "m").toDate();
+    dispatch(
+      getCheckoutService({ startDate: a.startDate, endDate: newEndDate })
+    );
+  };
+
+  // fetching on loading the component
   const onChangedCalRange = (r) =>
     console.log("Calendar range selected (fetch bookings here): ", r);
 
@@ -42,10 +56,6 @@ export default function Calendar() {
     [21 * msInHour, 24 * msInHour],
   ];
 
-  const handleChange = (e) => {
-    console.log(e.target.value);
-  };
-
   return (
     <div className={`${classes.root}`}>
       <form className={`${classes.form}`}>
@@ -54,7 +64,7 @@ export default function Calendar() {
           id="staff"
           name="staff"
           className={`${classes.form_select}`}
-          onChange={(e) => handleChange(e)}
+          onChange={handleChange}
         >
           <option className={`${classes.form_option}`} value="All staff">
             All staff

@@ -39,12 +39,13 @@ export const useStyles = makeStyles((theme) => ({
       flexBasis: "45%",
     },
     [theme.breakpoints.down("md")]: {
-      flexBasis: "auto",
+      flexBasis: "30%",
     },
     [theme.breakpoints.down("sm")]: {
+      flexBasis: "90%",
       flexFlow: "row wrap",
       justifyContent: "space-between",
-      width: "90%",
+      width: "100%",
     },
   },
   menuItem: {
