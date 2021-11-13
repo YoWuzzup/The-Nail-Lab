@@ -6,7 +6,6 @@ export const useStyles = makeStyles((theme) => ({
     margin: "0 auto 0",
     width: "260px",
     minHeight: "260px",
-    maxHeight: "280px",
     display: "flex",
     flexFlow: "row wrap",
     alignContent: "flex-start",
@@ -54,6 +53,26 @@ export const useStyles = makeStyles((theme) => ({
   btn: {
     width: "210px",
     height: "49px",
-    margin: "0 auto 20px",
+    margin: "0 auto 10px",
+  },
+  singleBtn: {
+    outline: "none",
+    backgroundColor: "#000",
+    transition: "all .3s ease-in-out",
+    fontSize: "inherit",
+    margin: "0 auto",
+    padding: "0",
+    borderRadius: "0",
+    width: "100%",
+    height: "100%",
+    color: "#fff",
+    "&:hover": {
+      cursor: "pointer",
+    },
+  },
+  errorLable: {
+    flexBasis: "80%",
+    color: "red",
+    margin: "0 0 20px 0",
   },
 }));

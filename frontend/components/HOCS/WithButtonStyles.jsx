@@ -1,7 +1,6 @@
-import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core/";
-import Link from 'next/link'
+import Link from "next/link";
 
 const styles = {
   root: {
@@ -23,10 +22,10 @@ const styles = {
   },
 };
 
-function WithButtonStyles({ type, classes, name, url, onClick }) {
+function WithButtonStyles({ type, classes, name, url }) {
   return (
-    <Link href={`/${url}`} underline="none">
-      <Button className={classes.root} disableRipple disableFocusRipple onClick={onClick && onClick}>
+    <Link href={`/${url}`} underline="none" passHref={true}>
+      <Button className={classes.root} disableRipple disableFocusRipple>
         {name}
       </Button>
     </Link>
