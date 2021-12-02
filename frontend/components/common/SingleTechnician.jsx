@@ -2,7 +2,7 @@ import { useStyles } from "./singleTechnician";
 
 export default function SingleTechnician({ data }) {
   const classes = useStyles();
-  console.log(data);
+
   return (
     <div className={`${classes.root}`}>
       {data.staff_image && (

@@ -10,7 +10,7 @@ const ErrorLable = ({ message, names }) => {
   return <div className={`${classes[names]}`}>{message}</div>;
 };
 
-export default function BookingInfo() {
+export default function BookingInfo({ url }) {
   const classes = useStyles();
   const [error, setError] = useState(false);
   const checkoutService = useSelector((state) => state.checkoutService);
@@ -26,7 +26,6 @@ export default function BookingInfo() {
     }
   }, [checkoutService.staff, checkoutService.startDate]);
 
-  console.log("asd");
   return (
     <div className={`${classes.root}`}>
       <div className={`${classes.name}`}>{checkoutService.name}</div>
@@ -41,16 +40,8 @@ export default function BookingInfo() {
       </div>
       <div className={`${classes.staff}`}>{checkoutService.staff}</div>
       <div className={`${classes.btn}`}>
-        {error ? (
-          <Button
-            variant="outlined"
-            className={`${classes.singleBtn}`}
-            disabled
-          >
-            Next
-          </Button>
-        ) : (
-          <Link href={`/checkout/info`} underline="none" passHref={true}>
+        {!error ? (
+          <Link href={`${url}`} underline="none" passHref={true}>
             <Button
               variant="outlined"
               className={`${classes.singleBtn}`}
@@ -59,13 +50,22 @@ export default function BookingInfo() {
               Next
             </Button>
           </Link>
-        )}
+        ) : null}
       </div>
+
       {error ? (
-        <ErrorLable
-          message={`Choose date and time to continue`}
-          names={"errorLable"}
-        />
+        <div className={`${classes.errors}`}>
+          {!checkoutService.startDate ? (
+            <ErrorLable
+              message={`Choose date and time to continue`}
+              names={"errorLable"}
+            />
+          ) : null}
+
+          {!checkoutService.staff ? (
+            <ErrorLable message={`Choose the master`} names={"errorLable"} />
+          ) : null}
+        </div>
       ) : null}
     </div>
   );

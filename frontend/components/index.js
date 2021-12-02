@@ -11,8 +11,10 @@ export { default as FollowBlock } from './Home/FollowBlock.jsx'
 
 // The Checkout
 export { default as CheckoutContent } from './Checkout/CheckoutContent.jsx'
+export { default as CheckoutInfoContent } from './Checkout/CheckoutInfoContent.jsx'
 export { default as Calendar } from './Checkout/Calendar.jsx'
 export { default as BookingInfo } from './Checkout/BookingInfo.jsx'
+export { default as DoneInfo } from './Checkout/DoneInfo.jsx'
 
 // The Technicians
 export { default as TechniciansContent } from './Technicians/TechniciansContent.jsx'

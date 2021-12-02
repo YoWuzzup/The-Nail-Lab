@@ -53,7 +53,7 @@ export const useStyles = makeStyles((theme) => ({
   btn: {
     width: "210px",
     height: "49px",
-    margin: "0 auto 10px",
+    margin: "0 auto 20px",
   },
   singleBtn: {
     outline: "none",

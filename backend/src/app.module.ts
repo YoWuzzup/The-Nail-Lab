@@ -8,10 +8,11 @@ import { AppService } from './app.service';
 import { ServiceModule } from './service/service.module';
 import { StaffModule } from './staff/staff.module';
 import { BookingModule } from './booking/booking.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({ isGlobal: true }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
@@ -26,6 +27,7 @@ import { BookingModule } from './booking/booking.module';
     ServiceModule,
     StaffModule,
     BookingModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

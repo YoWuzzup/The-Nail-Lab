@@ -15,7 +15,7 @@ export default function CheckoutContent() {
 
       <div className={`${classes.calendar_block}`}>
         <Calendar />
-        <BookingInfo />
+        <BookingInfo url={"/checkout/info"} />
       </div>
     </div>
   );

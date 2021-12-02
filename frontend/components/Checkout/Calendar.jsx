@@ -58,7 +58,7 @@ export default function Calendar() {
 
   return (
     <div className={`${classes.root}`}>
-      <form className={`${classes.form}`} id='main'>
+      <form className={`${classes.form}`} id="main">
         <label htmlFor="staff" />
         <select
           id="staff"
