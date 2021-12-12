@@ -47,8 +47,9 @@ export default function Calendar() {
   };
 
   // fetching on loading the component
-  const onChangedCalRange = (r) =>
-    console.log("Calendar range selected (fetch bookings here): ", r);
+  const onChangedCalRange = (r) => {
+    // console.log("Calendar range selected (fetch bookings here): ", r);
+  };
 
   // range of working day, this one says: from 8:00am to 8:00pm are working. 1t and 2d array accordinly.
   const blockOutPeriods = [

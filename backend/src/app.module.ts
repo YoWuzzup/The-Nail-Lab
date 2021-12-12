@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import * as dotenv from 'dotenv';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -9,6 +10,9 @@ import { ServiceModule } from './service/service.module';
 import { StaffModule } from './staff/staff.module';
 import { BookingModule } from './booking/booking.module';
 import { UsersModule } from './users/users.module';
+import { MailModule } from './mails/mail.module';
+
+dotenv.config();
 
 @Module({
   imports: [
@@ -28,6 +32,7 @@ import { UsersModule } from './users/users.module';
     StaffModule,
     BookingModule,
     UsersModule,
+    MailModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -4,6 +4,7 @@ import { useStyles } from "./bookingInfo";
 import { Button } from "@material-ui/core/";
 import moment from "moment";
 import Link from "next/link";
+import axios from "axios";
 
 const ErrorLable = ({ message, names }) => {
   const classes = useStyles();
@@ -14,9 +15,18 @@ export default function BookingInfo({ url }) {
   const classes = useStyles();
   const [error, setError] = useState(false);
   const checkoutService = useSelector((state) => state.checkoutService);
+  const buyerInfo = useSelector((state) => state.buyerInfo);
   const formatedDate = moment(checkoutService.startDate).format(
     "MMMM D, YYYY hh:mm a"
   );
+
+  const handleClick = (e) => {
+    if (buyerInfo.name || buyerInfo.email) {
+      axios.post("http://localhost:5000/email/confirmation/", buyerInfo);
+    } else {
+      return;
+    }
+  };
 
   useEffect(() => {
     if (checkoutService && checkoutService.staff && checkoutService.startDate) {
@@ -43,9 +53,11 @@ export default function BookingInfo({ url }) {
         {!error ? (
           <Link href={`${url}`} underline="none" passHref={true}>
             <Button
+              onClick={handleClick}
               variant="outlined"
               className={`${classes.singleBtn}`}
               style={{ backgroundColor: "#000", color: "#fff" }}
+              type="submit"
             >
               Next
             </Button>

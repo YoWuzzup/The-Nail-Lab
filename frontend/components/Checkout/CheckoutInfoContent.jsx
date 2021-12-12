@@ -5,7 +5,6 @@ import { useStyles } from "./checkoutInfoContent";
 import { BookingInfo } from "../";
 import { InputBase, InputLabel } from "@material-ui/core";
 import { buyerInfo } from "../../Redux/Actions/Buyer";
-import axios from "axios";
 
 export default function CheckoutInfoContent() {
   const dispatch = useDispatch();
@@ -22,9 +21,8 @@ export default function CheckoutInfoContent() {
     dispatch(buyerInfo(formValues));
   };
 
-  const handle = (e) => {
-    console.log(formValues);
-    axios.post("http://localhost:5000/users/", formValues);
+  const handleSubmit = (e) => {
+    console.log('asd');
   };
 
   return (
@@ -38,7 +36,11 @@ export default function CheckoutInfoContent() {
         Tell us a bit about yourself
       </div>
 
-      <form id="main" className={`${classes.form_block}`} onClick={handle}>
+      <form
+        id="main"
+        className={`${classes.form_block}`}
+        onSubmit={handleSubmit}
+      >
         <InputLabel htmlFor="name" className={classes.labels} required>
           name
         </InputLabel>

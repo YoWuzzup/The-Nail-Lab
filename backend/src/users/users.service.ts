@@ -36,7 +36,7 @@ export class UsersService {
         console.log(`no user: ${email}`);
         const newUser = new this.usersModel(data);
         const result = await newUser.save();
-        await this.sendEmail(email, templates.confirming(result._id));
+        // await this.sendEmail(email, templates.confirming(result._id));
         return result;
       }
       // if we have a user dont he didn't confirm
@@ -85,31 +85,31 @@ export class UsersService {
   }
 
   // sending an email
-  private async sendEmail(to: any, content: any): Promise<any> {
-    const credentials = {};
-    console.log(to);
+  // private async sendEmail(to: any, content: any): Promise<any> {
+  //   const credentials = {};
+  //   console.log(to);
 
-    const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 465,
-      secure: true,
-      // These environment variables will be pulled from the .env file
-      auth: {
-        user: `${process.env.MAIL_USER}`,
-        pass: `${process.env.MAIL_PASS}`,
-      },
-    });
+  //   const transporter = nodemailer.createTransport({
+  //     host: 'smtp.gmail.com',
+  //     port: 465,
+  //     secure: true,
+  //     // These environment variables will be pulled from the .env file
+  //     auth: {
+  //       user: `${process.env.MAIL_USER}`,
+  //       pass: `${process.env.MAIL_PASS}`,
+  //     },
+  //   });
 
-    // The from and to addresses for the email that is about to be sent.
-    const contacts = async () => ({
-      from: `${process.env.MAIL_USER}`,
-      to: to,
-    });
+  //   // The from and to addresses for the email that is about to be sent.
+  //   const contacts = async () => ({
+  //     from: `${process.env.MAIL_USER}`,
+  //     to: to,
+  //   });
 
-    // Combining the content and contacts into a single object that can
-    // be passed to Nodemailer.
-    const email = await Object.assign({}, content, contacts);
+  //   // Combining the content and contacts into a single object that can
+  //   // be passed to Nodemailer.
+  //   const email = await Object.assign({}, content, contacts);
 
-    await transporter.sendMail(email);
-  }
+  //   await transporter.sendMail(email);
+  // }
 }
