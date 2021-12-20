@@ -8,6 +8,7 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     flexBasis: "30%",
     margin: "0 auto",
+    backgroundColor: "#fff",
     "& > *": {
       width: "70%",
     },
@@ -16,23 +17,25 @@ export const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down("sm")]: {
       width: "90%",
+      marginBottom: "30px",
     },
   },
   image: {
-    width: "100%",
-    minHeight: "200px",
+    width: "80%",
+    minHeight: "228px",
     objectFit: "cover",
-    margin: "0 auto 75px",
+    margin: "32px auto 24px",
     imageResolution: "from-image",
   },
   info: {
     display: "flex",
-    flexFlow: "row wrap",
+    flexFlow: "column",
     justifyContent: "center",
+    alignItems: "center",
   },
   name: {
     flexBasis: "100%",
-    fontSize: "35px",
+    fontSize: "24px",
     textAlign: "center",
     margin: "0 0 30px",
     [theme.breakpoints.down("sm")]: {
@@ -42,13 +45,18 @@ export const useStyles = makeStyles((theme) => ({
   description: {
     display: "flex",
     flexFlow: "column",
-    margin: "0 auto 50px",
+    margin: "0 auto 0",
   },
   description_item: {
-    fontSize: "17px",
+    fontSize: "14px",
     margin: "0 auto 15px",
     [theme.breakpoints.down("xs")]: {
       fontSize: "14px",
     },
+  },
+  button: {
+    width: "100%",
+    height: "40px",
+    margin: "0 auto 33px",
   },
 }));

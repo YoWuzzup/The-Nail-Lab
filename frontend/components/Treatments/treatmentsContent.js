@@ -50,6 +50,7 @@ export const useStyles = makeStyles((theme) => ({
     borderBottom: "3px solid #a48c74",
   },
   service_block: {
+    width: '100%',
     display: "flex",
     flexFlow: "row wrap",
     justifyContent: "space-around",

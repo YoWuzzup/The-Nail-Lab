@@ -5,8 +5,8 @@ import { MailService } from './mail.service';
 export class MailController {
   constructor(private mailService: MailService) {}
 
-  @Post('confirmation')
+  @Post('confirmation/:userId')
   async getEmail(@Body() data: object) {
-    return this.mailService.userSendEmail(data);
+    return this.mailService.userConfirm(data);
   }
 }

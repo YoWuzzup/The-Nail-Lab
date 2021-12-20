@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
+import Link from "next/link";
 
 const useStyles = makeStyles((theme) => ({
   treatment: {
@@ -9,9 +10,9 @@ const useStyles = makeStyles((theme) => ({
     flexFlow: "column",
     justifyContent: "space-between",
     [theme.breakpoints.down("sm")]: {
-      flexBasis: '100%',
-      width: '100%',
-      margin: '0 0 50px'
+      flexBasis: "100%",
+      width: "100%",
+      margin: "0 0 50px",
     },
   },
   treatment_header: {
@@ -22,9 +23,9 @@ const useStyles = makeStyles((theme) => ({
     width: "80%",
     margin: "0 auto",
     whiteSpace: "pre-wrap",
-    [theme.breakpoints.down('lg')]:{
-    fontSize: "50px",
-    }
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "50px",
+    },
   },
   treatment_image: {
     width: "100%",
@@ -38,18 +39,20 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Treatment({ item, length }) {
   const classes = useStyles();
-  const itemName = item.i.replace(' ', "\n");
+  const itemName = item.i.replace(" ", "\n");
 
   return (
     <div className={classes.treatment}>
-      <header className={classes.treatment_header} >
-        {length < 10 ? `0${length}` : length} / <br/>
+      <header className={classes.treatment_header}>
+        {length < 10 ? `0${length}` : length} / <br />
         {itemName}
       </header>
-      <div
-        className={classes.treatment_image}
-        style={{ backgroundImage: `url(${item.img})` }}
-      />
+      <Link href={`/treatments`}>
+        <div
+          className={classes.treatment_image}
+          style={{ backgroundImage: `url(${item.img})`, cursor: "pointer" }}
+        />
+      </Link>
     </div>
   );
 }

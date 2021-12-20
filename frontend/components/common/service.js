@@ -13,12 +13,13 @@ export const useStyles = makeStyles((theme) => ({
   image: {
     objectFit: "cover",
     maxWidth: "100%",
+    width: "100%",
     height: "auto",
     minHeight: "200px",
     display: "block",
     margin: "0 auto 50px",
-    cursor: 'pointer',
-    position: 'relative',
+    cursor: "pointer",
+    position: "relative",
   },
   info: {
     display: "flex",
@@ -33,18 +34,18 @@ export const useStyles = makeStyles((theme) => ({
     textTransform: "capitalize",
     transition: "all linear .3s",
     margin: "0 auto 25px",
-    cursor: 'pointer',
+    cursor: "pointer",
     "&:hover": {
       opacity: ".5",
     },
   },
   duration: {
     margin: "0 auto 25px",
-    fontSize: '16px'
+    fontSize: "16px",
   },
   cost: {
     margin: "0 auto 25px",
-    fontSize: '16px'
+    fontSize: "16px",
   },
   button: {
     width: "130px",

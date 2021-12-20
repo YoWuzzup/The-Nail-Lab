@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import { getSingleService } from "../../Redux/Actions/Service";
+import { getCheckoutService } from "../../Redux/Actions/CheckoutService";
 import { useStyles } from "./singleServicePage";
 import { WithButtonStyles } from "..";
 
@@ -9,6 +10,16 @@ export default function SingleServicePage({ name }) {
   const dispatch = useDispatch();
   const service = useSelector((state) => state.singleService);
   const classes = useStyles();
+
+  const handleClick = (e) => {
+    dispatch(
+      getCheckoutService({
+        name: service[0]?.name,
+        cost: service[0]?.cost,
+        duration: service[0]?.duration,
+      })
+    );
+  };
 
   useEffect(() => {
     dispatch(getSingleService(name));
@@ -26,7 +37,7 @@ export default function SingleServicePage({ name }) {
         <div className={`${classes.duration}`}>{service[0]?.duration} min.</div>
         <div className={`${classes.cost}`}>$ {service[0]?.cost}</div>
 
-        <div className={`${classes.button}`}>
+        <div className={`${classes.button}`} onClick={handleClick}>
           <WithButtonStyles name={"book now"} url="checkout" />
         </div>
       </div>
@@ -60,7 +71,7 @@ export default function SingleServicePage({ name }) {
           <div className={`${classes.secondCost}`}>$ {service[0]?.cost}</div>
         </div>
 
-        <div className={`${classes.secondButton}`}>
+        <div className={`${classes.secondButton}`} onClick={handleClick}>
           <WithButtonStyles name={"book now"} url="checkout" />
         </div>
 

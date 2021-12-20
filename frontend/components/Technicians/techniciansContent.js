@@ -15,7 +15,8 @@ export const useStyles = makeStyles((theme) => ({
   },
   staff_block: {
     flexBasis: "100%",
-    margin: '0 auto 50px',
+    width: "100%",
+    margin: "0 auto 20px",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "flex-start",

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { AppBar, MenuList, MenuItem, IconButton } from "@material-ui/core";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import { WithButtonStyles } from "../index";
@@ -18,6 +19,7 @@ const btns = [
 function MainMenuList({ activeMenu, setActiveMenu, navigationButton }) {
   const dispatch = useDispatch();
   const classes = useStyles();
+  const router = useRouter();
 
   const handleCloseMenu = (e, name) => {
     let newName =
@@ -32,7 +34,7 @@ function MainMenuList({ activeMenu, setActiveMenu, navigationButton }) {
     <MenuList className={activeMenu ? classes.menuListSided : classes.menuList}>
       {btns &&
         btns.map((item, index) => {
-          let newName = item.name.split(" ").join("");
+          let newUrl = router.pathname.slice(1);
 
           return (
             <Link href={`/${item.url}`} key={`${item.name}_${index}`}>
@@ -41,10 +43,13 @@ function MainMenuList({ activeMenu, setActiveMenu, navigationButton }) {
                 className={`${
                   activeMenu ? classes.menuItemSided : classes.menuItem
                 } ${
-                  newName === navigationButton ? classes.activeMenuItem : ""
+                  item.name.includes(newUrl) && newUrl !== ""
+                    ? classes.activeMenuItem
+                    : ""
                 } fs13px`}
                 onClick={(e) => handleCloseMenu(e, item.name)}
                 name={item.name}
+                disableRipple
               >
                 {item.name}
               </MenuItem>
@@ -62,7 +67,7 @@ function ToggleMenuButton({ activeMenu, handleMenuClick }) {
     <div
       className={classes.menuBtn}
       onClick={handleMenuClick}
-      style={{ zIndex: activeMenu ? 10 : 1 }}
+      style={{ zIndex: activeMenu ? 51 : 1 }}
     >
       <div
         className={`${classes.bars} ${activeMenu ? classes.bar1_animated : ""}`}
@@ -129,35 +134,37 @@ export default function NavBar() {
         color="primary"
         position="static"
       >
-        <MainMenuList
-          setActiveMenu={setActiveMenu}
-          navigationButton={navigationButton}
-        />
-
-        <div className={classes.buttons}>
-          <a href="tel:555-555-5555" className={classes.phone}>
-            CALL US: 555-555-5555
-          </a>
-
-          <div style={{ width: "130px", height: "35px" }}>
-            <WithButtonStyles
-              name={"book now"}
-              url="treatments"
-              classes={classes.booknow}
-            />
-          </div>
-
-          <ToggleMenuButton
-            activeMenu={activeMenu}
-            handleMenuClick={handleMenuClick}
+        <div className={classes.root_inner}>
+          <MainMenuList
+            setActiveMenu={setActiveMenu}
+            navigationButton={navigationButton}
           />
 
-          {!activeMenu && <LogInButton activeMenu={activeMenu} />}
-        </div>
+          <div className={classes.buttons}>
+            <a href="tel:555-555-5555" className={classes.phone}>
+              CALL US: 555-555-5555
+            </a>
 
-        {activeMenu && (
-          <ActiveMenu activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
-        )}
+            <div style={{ width: "130px", height: "35px" }}>
+              <WithButtonStyles
+                name={"book now"}
+                url="treatments"
+                classes={classes.booknow}
+              />
+            </div>
+
+            <ToggleMenuButton
+              activeMenu={activeMenu}
+              handleMenuClick={handleMenuClick}
+            />
+
+            {!activeMenu && <LogInButton activeMenu={activeMenu} />}
+          </div>
+
+          {activeMenu && (
+            <ActiveMenu activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
+          )}
+        </div>
       </AppBar>
     </>
   );

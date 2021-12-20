@@ -17,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const center = {
-  lat: -3.745,
-  lng: -38.523,
+  lat: 53.4261,
+  lng: 14.4821,
 };
 
 function MyGoogleMap() {
@@ -28,7 +28,7 @@ function MyGoogleMap() {
       <GoogleMap
         mapContainerClassName={classes.root}
         center={center}
-        zoom={10}
+        zoom={13}
         options={{ draggable: false }}
       >
         {/* Child components, such as markers, info windows, etc. */}

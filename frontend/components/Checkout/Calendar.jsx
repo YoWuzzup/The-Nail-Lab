@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   AvailabilityCalendar,
   AvailabilityEvent,
@@ -9,8 +10,10 @@ import {
   Overrides,
 } from "react-availability-calendar";
 import moment from "moment";
+
+// redux
 import { getCheckoutService } from "../../Redux/Actions/CheckoutService";
-import { useDispatch, useSelector } from "react-redux";
+import { getTechnicians } from "../../Redux/Actions/Technicians";
 
 // styles
 import { useStyles, newOverrides } from "./calendar";
@@ -21,16 +24,17 @@ const providerTimeZone = "Europe/Warsaw";
 export default function Calendar() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.checkoutService);
+  const staff = useSelector((state) => state.technicians);
   const now = new Date();
   const classes = useStyles();
   const [bookings, setBookings] = useState([
     {
-      startDate: new Date(2021, 10, 9, 18),
-      endDate: new Date(2021, 10, 10, 20),
+      startDate: new Date(2021, 11, 25, 18),
+      endDate: new Date(2021, 11, 25, 20),
     },
     {
-      startDate: new Date(2021, 11, 1, 16, 30),
-      endDate: new Date(2021, 11, 1, 17),
+      startDate: new Date(2021, 11, 25, 13, 10),
+      endDate: new Date(2021, 11, 25, 16, 30),
     },
   ]);
 
@@ -48,7 +52,9 @@ export default function Calendar() {
 
   // fetching on loading the component
   const onChangedCalRange = (r) => {
-    // console.log("Calendar range selected (fetch bookings here): ", r);
+    // fetch bookings here
+    console.log(r);
+    dispatch(getTechnicians());
   };
 
   // range of working day, this one says: from 8:00am to 8:00pm are working. 1t and 2d array accordinly.
@@ -70,15 +76,17 @@ export default function Calendar() {
           <option className={`${classes.form_option}`} value="All staff">
             All staff
           </option>
-          <option className={`${classes.form_option}`} value="Nataly">
-            Nataly
-          </option>
-          <option className={`${classes.form_option}`} value="Sonya">
-            Sonya
-          </option>
-          <option className={`${classes.form_option}`} value="Lilya">
-            Lilya
-          </option>
+          {staff.map((person, index) => {
+            return (
+              <option
+                key={`${person.name}_${index}`}
+                className={`${classes.form_option}`}
+                value={`${person.name} ${person.surname}`}
+              >
+                {person.name} {person.surname}
+              </option>
+            );
+          })}
         </select>
       </form>
       <div className={`${classes.calendar_container}`}>

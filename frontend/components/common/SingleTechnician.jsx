@@ -1,4 +1,5 @@
 import { useStyles } from "./singleTechnician";
+import { WithButtonStyles } from "../";
 
 export default function SingleTechnician({ data }) {
   const classes = useStyles();
@@ -14,9 +15,7 @@ export default function SingleTechnician({ data }) {
       )}
 
       <div className={`${classes.info}`}>
-        <div className={`${classes.name}`}>
-          {data?.name}<br/>{data?.surname}
-        </div>
+        <div className={`${classes.name}`}>{data?.name}</div>
 
         <div className={`${classes.description}`}>
           {data?.info?.map((item, index) => {
@@ -29,6 +28,10 @@ export default function SingleTechnician({ data }) {
               </div>
             );
           })}
+        </div>
+
+        <div className={`${classes.button}`}>
+          <WithButtonStyles name={"Book Now"} url="treatments" />
         </div>
       </div>
     </div>

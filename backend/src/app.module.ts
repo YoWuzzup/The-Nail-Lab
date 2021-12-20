@@ -32,7 +32,6 @@ dotenv.config();
     StaffModule,
     BookingModule,
     UsersModule,
-    MailModule,
   ],
   controllers: [AppController],
   providers: [AppService],
