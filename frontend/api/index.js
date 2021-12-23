@@ -59,3 +59,11 @@ export const postUserConfirmed = async (data) => {
     console.log(error);
   }
 };
+
+export const fetchBookings = async (data) => {
+  try {
+    return axios.get(`${url}booking?staff_fullname=${data}`);
+  } catch (error) {
+    console.log(error);
+  }
+};

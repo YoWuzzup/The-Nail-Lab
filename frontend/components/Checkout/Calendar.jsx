@@ -10,9 +10,11 @@ import {
   Overrides,
 } from "react-availability-calendar";
 import moment from "moment";
+import { fetchBookings } from "../../api/index";
 
 // redux
 import { getCheckoutService } from "../../Redux/Actions/CheckoutService";
+import { getBookings } from "../../Redux/Actions/Bookings";
 import { getTechnicians } from "../../Redux/Actions/Technicians";
 
 // styles
@@ -25,9 +27,10 @@ export default function Calendar() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.checkoutService);
   const staff = useSelector((state) => state.technicians);
+  const bookings = useSelector((state) => state.bookings);
   const now = new Date();
   const classes = useStyles();
-  const [bookings, setBookings] = useState([
+  const [newbookings, setBookings] = useState([
     {
       startDate: new Date(2021, 11, 25, 18),
       endDate: new Date(2021, 11, 25, 20),
@@ -40,6 +43,7 @@ export default function Calendar() {
 
   const handleChange = (e) => {
     dispatch(getCheckoutService({ staff: e.target.value }));
+    dispatch(getBookings(e.target.value));
   };
 
   // on clicking on the available time
@@ -53,7 +57,6 @@ export default function Calendar() {
   // fetching on loading the component
   const onChangedCalRange = (r) => {
     // fetch bookings here
-    console.log(r);
     dispatch(getTechnicians());
   };
 
@@ -91,7 +94,7 @@ export default function Calendar() {
       </form>
       <div className={`${classes.calendar_container}`}>
         <AvailabilityCalendar
-          bookings={bookings}
+          bookings={newbookings}
           providerTimeZone={providerTimeZone}
           moment={moment}
           initialDate={now}

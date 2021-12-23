@@ -6,6 +6,7 @@ import { service, singleService } from "./Service";
 import { technicians, singleTechnician } from "./Technicians";
 import { checkoutService } from "./checkoutService";
 import { buyerInfo } from "./Buyer";
+import { bookings } from "./Bookings";
 
 export default combineReducers({
   navigationButton,
@@ -16,4 +17,5 @@ export default combineReducers({
   singleTechnician,
   checkoutService,
   buyerInfo,
+  bookings,
 });
