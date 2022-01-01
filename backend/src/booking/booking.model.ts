@@ -6,8 +6,8 @@ export const BookingSchema = new mongoose.Schema({
   staff_fullname: String,
   user_name: String,
   user_email: String,
-  start_date: Date,
-  end_date: Date,
+  startDate: Date,
+  endDate: Date,
 });
 
 export interface Booking extends mongoose.Document {
@@ -16,6 +16,6 @@ export interface Booking extends mongoose.Document {
   staff_fullname: string;
   user_name: string;
   user_email: string;
-  start_date: Date;
-  end_date: Date;
+  startDate: Date;
+  endDate: Date;
 }

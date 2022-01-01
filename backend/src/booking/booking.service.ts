@@ -25,8 +25,8 @@ export class BookingService {
       staff_fullname: date.staff_fullname,
       user_name: date.user_name,
       user_email: date.user_email,
-      start_date: date.start_date,
-      end_date: date.end_date,
+      startDate: date.startDate,
+      endDate: date.endDate,
     }));
   }
 

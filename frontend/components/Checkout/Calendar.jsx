@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   AvailabilityCalendar,
@@ -10,7 +9,6 @@ import {
   Overrides,
 } from "react-availability-calendar";
 import moment from "moment";
-import { fetchBookings } from "../../api/index";
 
 // redux
 import { getCheckoutService } from "../../Redux/Actions/CheckoutService";
@@ -30,19 +28,11 @@ export default function Calendar() {
   const bookings = useSelector((state) => state.bookings);
   const now = new Date();
   const classes = useStyles();
-  const [newbookings, setBookings] = useState([
-    {
-      startDate: new Date(2021, 11, 25, 18),
-      endDate: new Date(2021, 11, 25, 20),
-    },
-    {
-      startDate: new Date(2021, 11, 25, 13, 10),
-      endDate: new Date(2021, 11, 25, 16, 30),
-    },
-  ]);
 
   const handleChange = (e) => {
+    // add staff name to the chosen service
     dispatch(getCheckoutService({ staff: e.target.value }));
+    // fetching bookings from mongoDB
     dispatch(getBookings(e.target.value));
   };
 
@@ -58,6 +48,9 @@ export default function Calendar() {
   const onChangedCalRange = (r) => {
     // fetch bookings here
     dispatch(getTechnicians());
+
+    // fetching bookings from mongoDB on loading
+    dispatch(getBookings('All staff'));
   };
 
   // range of working day, this one says: from 8:00am to 8:00pm are working. 1t and 2d array accordinly.
@@ -94,7 +87,7 @@ export default function Calendar() {
       </form>
       <div className={`${classes.calendar_container}`}>
         <AvailabilityCalendar
-          bookings={newbookings}
+          bookings={bookings}
           providerTimeZone={providerTimeZone}
           moment={moment}
           initialDate={now}

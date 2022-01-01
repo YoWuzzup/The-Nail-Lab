@@ -81,6 +81,13 @@ export const newOverrides = {
       flexBasis: "50%",
     },
   },
+  Availabilities: {
+    style: {
+      display: "flex",
+      flexFlow: "row wrap",
+      justifyContent: "center",
+    },
+  },
   AvailSlot: {
     style: {
       minWidth: "100px",
