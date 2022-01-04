@@ -10,6 +10,7 @@ export const UsersSchema = new mongoose.Schema({
     default: false,
   },
   message: String,
+  password: String,
 });
 
 export interface Users extends mongoose.Document {
@@ -19,4 +20,5 @@ export interface Users extends mongoose.Document {
   appointments: Array<string>;
   confirmed: boolean;
   message: string;
+  password: string;
 }

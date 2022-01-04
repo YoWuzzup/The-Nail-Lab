@@ -1,7 +1,16 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Body,
+  Injectable,
+  NotFoundException,
+  Res,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { MailService } from '../mails/mail.service';
+import * as bcrypt from 'bcrypt';
+import { Response } from 'express';
+import { JwtService } from '@nestjs/jwt';
 
 import { Users } from './users.model';
 
@@ -9,6 +18,7 @@ import { Users } from './users.model';
 export class UsersService {
   constructor(
     private mailService: MailService,
+    private jwtService: JwtService,
     @InjectModel('Users') private readonly usersModel: Model<Users>,
   ) {}
 
@@ -31,7 +41,8 @@ export class UsersService {
 
     try {
       if (!user) {
-        const newUser = new this.usersModel(data);
+        const hashedPass = await bcrypt.hash(data.password, 12);
+        const newUser = new this.usersModel({ ...data, password: hashedPass });
         const result = await newUser.save();
 
         await this.mailService.userSendEmail(result);
@@ -40,11 +51,29 @@ export class UsersService {
         await this.mailService.userSendEmail(user);
 
         return user;
-      } else {
       }
     } catch (error) {
       console.log(error);
     }
+  }
+
+  async login(data: any, @Res({ passthrough: true }) response: Response) {
+    const { email, password } = data;
+    const user = await this.usersModel.findOne({ email }).exec();
+    console.log(user.id);
+
+    if (!user) {
+      throw new BadRequestException('invalid credentials');
+    }
+
+    if (!(await bcrypt.compare(password, user.password))) {
+      throw new BadRequestException('invalid credentials');
+    }
+    const jwt = await this.jwtService.signAsync({ id: user.id });
+
+    response.cookie('jwt', jwt, { httpOnly: true });
+
+    return { message: 'success' };
   }
 
   private async findUser(email: string): Promise<Users> {

@@ -100,20 +100,22 @@ function LogInButton({ activeMenu }) {
   const classes = useStyles();
 
   return (
-    <IconButton
-      aria-label="account of current user"
-      aria-controls="menu-appbar"
-      aria-haspopup="true"
-      color="inherit"
-      disableRipple
-      size="medium"
-      className={activeMenu ? classes.loginBtnSide : classes.loginBtn}
-    >
-      <AccountCircle fontSize="large" />
-      <div className={activeMenu ? classes.loginSide : classes.login}>
-        Log In
-      </div>
-    </IconButton>
+    <Link href={`/users/login`}>
+      <IconButton
+        aria-label="account of current user"
+        aria-controls="menu-appbar"
+        aria-haspopup="true"
+        color="inherit"
+        disableRipple
+        size="medium"
+        className={activeMenu ? classes.loginBtnSide : classes.loginBtn}
+      >
+        <AccountCircle fontSize="large" />
+        <div className={activeMenu ? classes.loginSide : classes.login}>
+          Log In
+        </div>
+      </IconButton>
+    </Link>
   );
 }
 

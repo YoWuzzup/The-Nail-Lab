@@ -67,3 +67,20 @@ export const fetchBookings = async (data) => {
     console.log(error);
   }
 };
+
+export const userRegistration = async (data) => {
+  try {
+    return axios.post(`${url}users/`, data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+export const userLogin = async (data) => {
+  try {
+    return axios.post(`${url}users/login`, data)
+  } catch (error) {
+    console.log(error);
+  }
+}
