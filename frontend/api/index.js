@@ -70,17 +70,26 @@ export const fetchBookings = async (data) => {
 
 export const userRegistration = async (data) => {
   try {
-    return axios.post(`${url}users/`, data);
+    return axios.post(`${url}users/register`, data);
   } catch (error) {
     console.log(error);
   }
 };
 
-
 export const userLogin = async (data) => {
   try {
-    return axios.post(`${url}users/login`, data)
+    return axios.post(`${url}users/login`, data, {
+      withCredentials: true,
+    });
   } catch (error) {
     console.log(error);
   }
-}
+};
+
+export const userLogOut = async () => {
+  try {
+    return axios.post(`${url}users/logout`, null, { withCredentials: true });
+  } catch (error) {
+    console.log(error);
+  }
+};

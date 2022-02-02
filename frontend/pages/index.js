@@ -1,5 +1,10 @@
 import Head from "next/head";
-import { MainPicture, WelcomeBlock, TreatmentsBlock, FollowBlock } from "../components";
+import {
+  MainPicture,
+  WelcomeBlock,
+  TreatmentsBlock,
+  FollowBlock,
+} from "../components";
 
 export default function Home() {
   return (

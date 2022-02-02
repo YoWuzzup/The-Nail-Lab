@@ -1,9 +1,12 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+
 import { useDispatch, useSelector } from "react-redux";
 import { buyerInfo } from "../../Redux/Actions/Buyer";
-import { userLogin } from "../../api/";
+import { signInUser } from "../../Redux/Actions/User";
+import { userLogin } from "../../api/index";
 
 import { InputBase, InputLabel } from "@material-ui/core";
 import { Button } from "@material-ui/core/";
@@ -11,20 +14,31 @@ import { useStyles } from "../../components/Checkout/checkoutInfoContent";
 
 export default function login() {
   const dispatch = useDispatch();
+  const router = useRouter();
   const classes = useStyles();
   const [formValues, setFormValues] = useState({});
-
-  const handleChange = (e) => {
-    setFormValues({ ...formValues, [e.target.name]: e.target.value });
-    dispatch(buyerInfo(formValues));
-  };
   const userInfo = useSelector((state) => state.buyerInfo);
 
-  const handleSubmit = (e) => {
+  const handleChange = async (e) => {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    userLogin(userInfo);
+    // login in
+    await userLogin(userInfo).then((e) => {
+      const { user } = e.data;
+
+      dispatch(signInUser(user));
+    });
+
+    await router.push("/");
   };
+
+  useEffect(() => {
+    dispatch(buyerInfo(formValues));
+  }, [formValues]);
 
   return (
     <>

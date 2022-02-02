@@ -1,15 +1,14 @@
 import {
-  BadRequestException,
-  Body,
   Injectable,
   NotFoundException,
-  Res,
+  UnauthorizedException,
+  BadRequestException,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { MailService } from '../mails/mail.service';
 import * as bcrypt from 'bcrypt';
-import { Response } from 'express';
+import { Response, Request } from 'express';
 import { JwtService } from '@nestjs/jwt';
 
 import { Users } from './users.model';
@@ -43,7 +42,9 @@ export class UsersService {
       if (!user) {
         const hashedPass = await bcrypt.hash(data.password, 12);
         const newUser = new this.usersModel({ ...data, password: hashedPass });
-        const result = await newUser.save();
+        const saving = await newUser.save();
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { password, ...result } = saving;
 
         await this.mailService.userSendEmail(result);
         return result;
@@ -57,10 +58,9 @@ export class UsersService {
     }
   }
 
-  async login(data: any, @Res({ passthrough: true }) response: Response) {
+  async login(data: any, response: Response) {
     const { email, password } = data;
     const user = await this.usersModel.findOne({ email }).exec();
-    console.log(user.id);
 
     if (!user) {
       throw new BadRequestException('invalid credentials');
@@ -69,14 +69,50 @@ export class UsersService {
     if (!(await bcrypt.compare(password, user.password))) {
       throw new BadRequestException('invalid credentials');
     }
-    const jwt = await this.jwtService.signAsync({ id: user.id });
+    const jwt = await this.jwtService.signAsync({ user });
 
     response.cookie('jwt', jwt, { httpOnly: true });
 
-    return { message: 'success' };
+    return {
+      user: {
+        name: user.name,
+        confirmed: user.confirmed,
+        email: user.email,
+        phone: user.phone,
+        appointments: user.appointments,
+      },
+    };
   }
 
-  private async findUser(email: string): Promise<Users> {
+  async user(request: Request) {
+    try {
+      const cookie = request.cookies.jwt;
+
+      const data = await this.jwtService.verifyAsync(cookie);
+
+      if (!data) {
+        throw new UnauthorizedException();
+      }
+
+      const user = await this.usersModel.findOne({ id: data.id });
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { password, ...result } = user;
+
+      return result;
+    } catch (error) {
+      throw new UnauthorizedException();
+    }
+  }
+
+  async logout(response: Response) {
+    response.clearCookie('jwt');
+
+    return {
+      message: 'success',
+    };
+  }
+
+  async findUser(email: string): Promise<Users> {
     let user;
 
     try {

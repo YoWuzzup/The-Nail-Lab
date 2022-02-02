@@ -1,12 +1,16 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { userLogOut } from "./../../api/";
+
 import { AppBar, MenuList, MenuItem, IconButton } from "@material-ui/core";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import { WithButtonStyles } from "../index";
 import { useStyles } from "./navBar";
+
 import { useDispatch, useSelector } from "react-redux";
 import { changeNavButton } from "../../Redux/Actions/Buttons";
+import { signOutUser } from "../../Redux/Actions/User";
 
 const btns = [
   { name: "home", url: "" },
@@ -95,11 +99,36 @@ function ActiveMenu({ activeMenu, setActiveMenu }) {
     </div>
   );
 }
-
-function LogInButton({ activeMenu }) {
+function LogOutButton({ activeMenu }) {
+  const dispatch = useDispatch();
+  const router = useRouter();
   const classes = useStyles();
 
+  const handleLogOut = async () => {
+    await userLogOut();
+    dispatch(signOutUser());
+
+    await router.push("/users/login");
+  };
+
   return (
+    <div>
+      <div
+        className={activeMenu ? classes.loginSide : classes.login}
+        onClick={handleLogOut}
+        style={{ cursor: "pointer" }}
+      >
+        Log Out
+      </div>
+    </div>
+  );
+}
+
+function LogInButton({ activeMenu, user }) {
+  const classes = useStyles();
+  return Object.keys(user).length !== 0 ? (
+    <LogOutButton activeMenu={activeMenu} />
+  ) : (
     <Link href={`/users/login`}>
       <IconButton
         aria-label="account of current user"
@@ -123,6 +152,7 @@ export default function NavBar() {
   const classes = useStyles();
   const [activeMenu, setActiveMenu] = useState(false);
   const navigationButton = useSelector((state) => state.navigationButton);
+  const user = useSelector((state) => state.user);
 
   const handleMenuClick = () => {
     setActiveMenu(!activeMenu);
@@ -160,7 +190,7 @@ export default function NavBar() {
               handleMenuClick={handleMenuClick}
             />
 
-            {!activeMenu && <LogInButton activeMenu={activeMenu} />}
+            {!activeMenu && <LogInButton activeMenu={activeMenu} user={user} />}
           </div>
 
           {activeMenu && (

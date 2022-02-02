@@ -1,12 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
   AvailabilityCalendar,
-  AvailabilityEvent,
-  MsSinceMidnightRange,
-  Booking,
-  Range,
-  CalendarThemeProp,
-  Overrides,
 } from "react-availability-calendar";
 import moment from "moment";
 
