@@ -6,6 +6,7 @@ export const useStyles = makeStyles((theme) => ({
     margin: "0 auto 0",
     width: "260px",
     minHeight: "260px",
+    maxHeight: "310px",
     display: "flex",
     flexFlow: "row wrap",
     alignContent: "flex-start",
@@ -15,7 +16,7 @@ export const useStyles = makeStyles((theme) => ({
     position: "fixed",
     right: "250px",
     [theme.breakpoints.down("lg")]: {
-      right: "100px",
+      right: "15%",
     },
     [theme.breakpoints.down("md")]: {
       position: "static",

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { userLogOut } from "./../../api/";
@@ -99,13 +99,15 @@ function ActiveMenu({ activeMenu, setActiveMenu }) {
     </div>
   );
 }
-function LogOutButton({ activeMenu }) {
+function LogOutButton({ activeMenu, setUser }) {
   const dispatch = useDispatch();
   const router = useRouter();
   const classes = useStyles();
 
   const handleLogOut = async () => {
     await userLogOut();
+
+    localStorage.removeItem("user"); //remove user
     dispatch(signOutUser());
 
     await router.push("/users/login");
@@ -124,11 +126,9 @@ function LogOutButton({ activeMenu }) {
   );
 }
 
-function LogInButton({ activeMenu, user }) {
+function LGINBTN({ activeMenu }) {
   const classes = useStyles();
-  return Object.keys(user).length !== 0 ? (
-    <LogOutButton activeMenu={activeMenu} />
-  ) : (
+  return (
     <Link href={`/users/login`}>
       <IconButton
         aria-label="account of current user"
@@ -145,6 +145,14 @@ function LogInButton({ activeMenu, user }) {
         </div>
       </IconButton>
     </Link>
+  );
+}
+
+function LogInButton({ activeMenu, user }) {
+  return user ? (
+    <LogOutButton activeMenu={activeMenu} user={user} />
+  ) : (
+    <LGINBTN activeMenu={activeMenu} />
   );
 }
 
@@ -172,7 +180,7 @@ export default function NavBar() {
             navigationButton={navigationButton}
           />
 
-          <div className={classes.buttons}>
+          <div className={`${classes.buttons}`}>
             <a href="tel:555-555-5555" className={classes.phone}>
               CALL US: 555-555-5555
             </a>

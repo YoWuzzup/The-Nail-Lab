@@ -79,6 +79,9 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   phone: {
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
     [theme.breakpoints.down("sm")]: {
       margin: "0 0 10px 0",
       flexBasis: "70%",

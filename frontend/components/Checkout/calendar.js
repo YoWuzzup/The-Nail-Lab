@@ -87,6 +87,7 @@ export const newOverrides = {
       flexFlow: "row wrap",
       justifyContent: "center",
     },
+    className: "availabilitiesBlock",
   },
   AvailSlot: {
     style: {

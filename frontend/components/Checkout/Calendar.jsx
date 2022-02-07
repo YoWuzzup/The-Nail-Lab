@@ -1,7 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import {
-  AvailabilityCalendar,
-} from "react-availability-calendar";
+import { AvailabilityCalendar } from "react-availability-calendar";
 import moment from "moment";
 
 // redux
@@ -44,10 +42,11 @@ export default function Calendar() {
     dispatch(getTechnicians());
 
     // fetching bookings from mongoDB on loading
-    dispatch(getBookings('All staff'));
+    dispatch(getBookings("All staff"));
   };
 
-  // range of working day, this one says: from 8:00am to 8:00pm are working. 1t and 2d array accordinly.
+  // range of working day, this one says: from 8:00am to 8:00pm are working.
+  // 1t and 2d array accordinly.
   const blockOutPeriods = [
     [0 * msInHour, 8 * msInHour],
     [21 * msInHour, 24 * msInHour],
@@ -91,6 +90,10 @@ export default function Calendar() {
           // range of minutes in schedule
           slotStepMs={1800000}
           overrides={newOverrides}
+          // the lable for picking date
+          theme={{
+            requestAppointmentLabel: "",
+          }}
         />
       </div>
     </div>

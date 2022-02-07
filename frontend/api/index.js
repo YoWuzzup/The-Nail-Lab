@@ -44,13 +44,13 @@ export const fetchSingleTechnician = async (id) => {
   }
 };
 
-export const postUser = async (data) => {
-  try {
-    return axios.post(`${url}users/`, data);
-  } catch (error) {
-    console.log(error);
-  }
-};
+// export const postUser = async (data) => {
+//   try {
+//     return axios.post(`${url}users/`, data);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 export const postUserConfirmed = async (data) => {
   try {
@@ -77,13 +77,13 @@ export const userRegistration = async (data) => {
 };
 
 export const userLogin = async (data) => {
-  try {
-    return axios.post(`${url}users/login`, data, {
+  return axios
+    .post(`${url}users/login`, data, {
       withCredentials: true,
+    })
+    .catch((error) => {
+      return error.response;
     });
-  } catch (error) {
-    console.log(error);
-  }
 };
 
 export const userLogOut = async () => {

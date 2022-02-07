@@ -5,7 +5,7 @@ export const useStyles = makeStyles((theme) => ({
     display: "grid",
     gridTemplateColumns: "repeat(8, 1fr)",
     gridTemplateRows: "repeat(2, 1fr)",
-    gap: "0% 0%",
+    gap: "0% 5%",
     gridTemplateAreas: ` 
       "header header header header para para para para"
       "header header header header para para para para"`,
@@ -42,10 +42,15 @@ export const useStyles = makeStyles((theme) => ({
     "&::after": {
       content: "'/'",
       position: "absolute",
-      width: "100px",
+      [theme.breakpoints.down("sm")]: {
+        display: "none",
+      },
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "50px",
     },
     [theme.breakpoints.down("xs")]: {
-      margin: "0 0 0 20px",
+      margin: "0 auto 0",
     },
   },
   para: {
@@ -55,8 +60,8 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: "16px",
     textAlign: "justify",
     [theme.breakpoints.down("md")]: {
-      margin: "0 0 50px 50px",
-      width: "50%",
+      margin: "0 auto 50px",
+      width: "80%",
     },
     [theme.breakpoints.down("xs")]: {
       margin: "0 0 50px 20px",

@@ -59,14 +59,16 @@ export const useStyles = makeStyles((theme) => ({
     flexFlow: "column wrap",
   },
   form_block: {
-    width: "100%",
+    minWidth: "70%",
     display: "flex",
     flexFlow: "column nowrap",
     gap: "5%",
     justifyContent: "center",
     alignItems: "center",
     alignSelf: "flex-start",
-    flexBasis: "100%",
+    [theme.breakpoints.down("md")]: {
+      margin: "0 auto 0",
+    },
     [theme.breakpoints.down("sm")]: {
       flexFlow: "column",
       alignSelf: "center",
@@ -114,5 +116,9 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+  },
+  error: {
+    margin: "0 auto 20px",
+    color: "red",
   },
 }));

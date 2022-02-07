@@ -3,6 +3,8 @@ import {
   NotFoundException,
   UnauthorizedException,
   BadRequestException,
+  HttpException,
+  HttpStatus,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -67,7 +69,13 @@ export class UsersService {
     }
 
     if (!(await bcrypt.compare(password, user.password))) {
-      throw new BadRequestException('invalid credentials');
+      throw new HttpException(
+        {
+          status: HttpStatus.NOT_FOUND,
+          error: 'Wrong password or email',
+        },
+        HttpStatus.NOT_FOUND,
+      );
     }
     const jwt = await this.jwtService.signAsync({ user });
 

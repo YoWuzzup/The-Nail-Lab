@@ -50,7 +50,7 @@ export const useStyles = makeStyles((theme) => ({
     borderBottom: "3px solid #a48c74",
   },
   service_block: {
-    width: '100%',
+    width: "100%",
     display: "flex",
     flexFlow: "row wrap",
     justifyContent: "space-around",
@@ -59,6 +59,7 @@ export const useStyles = makeStyles((theme) => ({
     margin: "0 auto 120px",
     [theme.breakpoints.down("sm")]: {
       flexFlow: "column",
+      margin: "0 auto 30px",
     },
   },
 }));

@@ -17,6 +17,7 @@ export default function login() {
   const router = useRouter();
   const classes = useStyles();
   const [formValues, setFormValues] = useState({});
+  const [error, setError] = useState();
   const userInfo = useSelector((state) => state.buyerInfo);
 
   const handleChange = async (e) => {
@@ -26,14 +27,23 @@ export default function login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // login in
-    await userLogin(userInfo).then((e) => {
-      const { user } = e.data;
+    await userLogin(userInfo)
+      .then(async (e) => {
+        if (e.status === 404) {
+          throw e;
+        }
+        const { user } = e?.data; // get fetched user
 
-      dispatch(signInUser(user));
-    });
+        setError(null); // set error to null
+        dispatch(signInUser(user)); // dispatch fetched user data to redux
+        localStorage.setItem("user", JSON.stringify(user)); // set user ifno to the localstorage
 
-    await router.push("/");
+        await router.push("/"); // go to main page when user is fetched successfully
+      })
+      .catch((er) => {
+        const { data } = er;
+        setError(data.error);
+      });
   };
 
   useEffect(() => {
@@ -77,6 +87,7 @@ export default function login() {
               className={`${classes.input}`}
             />
           </div>
+          <div className={`${classes.error}`}>{error && error}</div>
         </form>
 
         <Button

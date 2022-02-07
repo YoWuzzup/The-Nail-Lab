@@ -4,7 +4,7 @@ import { useStyles } from "./bookingInfo";
 import { Button } from "@material-ui/core/";
 import moment from "moment";
 import Link from "next/link";
-import { postUser } from "../../api";
+import { userRegistration } from "../../api";
 
 const ErrorLable = ({ message, names }) => {
   const classes = useStyles();
@@ -22,7 +22,7 @@ export default function BookingInfo({ url }) {
 
   const handleClick = (e) => {
     if (buyerInfo.name || buyerInfo.email) {
-      postUser(buyerInfo);
+      userRegistration(buyerInfo);
     } else {
       return;
     }

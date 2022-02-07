@@ -1,9 +1,22 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+
 import { useStyles } from "./checkoutContent";
 import { Calendar, BookingInfo } from "../";
 
 export default function CheckoutContent() {
   const classes = useStyles();
+  const [url, setUrl] = useState("");
+  const user = useSelector((state) => state.user);
+
+  useEffect(() => {
+    if (Object.keys(user).length !== 0) {
+      setUrl("checkout/done");
+    } else {
+      setUrl("checkout/info");
+    }
+  }, []);
 
   return (
     <div className={`${classes.root}`}>
@@ -15,7 +28,7 @@ export default function CheckoutContent() {
 
       <div className={`${classes.calendar_block}`}>
         <Calendar />
-        <BookingInfo url={"/checkout/info"} />
+        <BookingInfo url={`${url}`} />
       </div>
     </div>
   );

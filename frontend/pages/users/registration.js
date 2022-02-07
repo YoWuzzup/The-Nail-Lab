@@ -1,13 +1,17 @@
 import Head from "next/head";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
+
 import { InputBase, InputLabel } from "@material-ui/core";
+import { Button } from "@material-ui/core/";
+
 import { buyerInfo } from "../../Redux/Actions/Buyer";
 import { useStyles } from "../../components/Checkout/checkoutInfoContent";
-import { Button } from "@material-ui/core/";
 import { userRegistration } from "../../api/";
 
 export default function technicians() {
+  const router = useRouter();
   const dispatch = useDispatch();
   const classes = useStyles();
   const [formValues, setFormValues] = useState({});
@@ -23,11 +27,12 @@ export default function technicians() {
     setConfirmationPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (formValues.password === confirmationPassword) {
       userRegistration(userInfo);
+      await router.push("/users/login");
     } else {
       alert("the password is not correct");
     }

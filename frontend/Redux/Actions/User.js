@@ -8,7 +8,7 @@ export const signInUser = (data) => async (dispatch) => {
 
 export const signOutUser = () => async (dispatch) => {
   try {
-    dispatch({ type: "LOGOUT_USER", payload: {} });
+    dispatch({ type: "LOGOUT_USER", payload: null });
   } catch (error) {
     console.log(error);
   }

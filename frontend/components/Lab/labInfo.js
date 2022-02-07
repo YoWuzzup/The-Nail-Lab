@@ -10,7 +10,7 @@ export const useStyles = makeStyles((theme) => ({
     color: "#333",
     [theme.breakpoints.down("md")]: {
       width: "80%",
-      justifyContent: "flex-start",
+      justifyContent: "center",
     },
     [theme.breakpoints.down("sm")]: {
       width: "95%",
@@ -23,13 +23,13 @@ export const useStyles = makeStyles((theme) => ({
     lineHeight: "1.5rem",
     padding: "0 3rem 0 0",
     margin: "0 0 50px",
-    [theme.breakpoints.down("md")]: {
-      marginLeft: "50px",
+    [theme.breakpoints.down("lg")]: {
       padding: "0",
+      margin: "0 auto 50px",
+      flexBasis: "80%",
     },
     [theme.breakpoints.down("xs")]: {
-      marginLeft: "20px",
-      flexBasis: "80%",
+      flexBasis: "90%",
     },
   },
 

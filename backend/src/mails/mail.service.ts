@@ -12,18 +12,20 @@ export class MailService {
     @InjectModel('Users') private readonly usersModel: Model<Users>,
   ) {}
 
-  async userSendEmail(data: Record<string, any>) {
+  async userSendEmail(recievedData: Record<string, any>) {
+    const data = recievedData._doc;
+
     await this.mailerService.sendMail({
       from: process.env.MAIL_USER,
-      to: data?.email,
+      to: recievedData.email || data.email,
       subject: `New message from ${process.env.MAIL_USER}`,
       template: './templates/confirmation',
       context: {
-        id: data?._id,
-        name: data?.name,
-        email: data?.email,
-        phone: data?.phone,
-        message: data?.message,
+        id: recievedData._id || data._id,
+        name: recievedData.name || data.name,
+        email: recievedData.email || data.email,
+        phone: recievedData.phone || data.phone,
+        message: recievedData.message || data.message,
       },
     });
   }

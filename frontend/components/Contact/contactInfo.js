@@ -25,14 +25,13 @@ export const useStyles = makeStyles((theme) => ({
     flexBasis: "50%",
     margin: "0 0 100px",
     [theme.breakpoints.down("md")]: {
-      justifyContent: "flex-start",
-    },
-    [theme.breakpoints.down("sm")]: {
-      flexBasis: "55%",
+      justifyContent: "center",
+      flexBasis: "100%",
+      margin: "0 auto 100px",
     },
     [theme.breakpoints.down("xs")]: {
       flexFlow: "column",
-      flexBasis: "90%",
+      alignItems: "flex-start",
     },
   },
   blocks: {
@@ -40,17 +39,18 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexFlow: "column",
     minHeight: "90px",
-    color: '#333',
+    color: "#333",
     "& > *": {
       fontSize: "16px",
       color: "inherit",
       width: "100%",
     },
     [theme.breakpoints.down("md")]: {
-      margin: "0 0 0 50px",
+      flexBasis: "100%",
+      minWidth: "250px",
     },
-    [theme.breakpoints.down("xs")]: {
-      margin: "0 0 0 20px",
+    [theme.breakpoints.down("sm")]: {
+      minWidth: "100px",
     },
   },
   headers: {
@@ -71,9 +71,5 @@ export const useStyles = makeStyles((theme) => ({
       minHeight: "210px",
     },
   },
+  hours: {},
 }));
-
-// [theme.breakpoints.down("lg")]: {},
-// [theme.breakpoints.down("md")]: {},
-// [theme.breakpoints.down("xs")]: {},
-// [theme.breakpoints.down("sm")]: {},

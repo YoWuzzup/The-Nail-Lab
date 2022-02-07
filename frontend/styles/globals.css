@@ -66,6 +66,12 @@ a {
 }
 
 /* calendar */
+.availabilitiesBlock{
+  background-color: #000 !important;
+  width: 100% !important;
+  height: 500px !important;
+}
+
 .availSlot {
   border: 1px solid #000;
   align-self: center;
