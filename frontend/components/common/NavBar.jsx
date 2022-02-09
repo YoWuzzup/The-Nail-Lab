@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { userLogOut } from "./../../api/";
@@ -99,7 +99,7 @@ function ActiveMenu({ activeMenu, setActiveMenu }) {
     </div>
   );
 }
-function LogOutButton({ activeMenu, setUser }) {
+function LogOutButton({ activeMenu }) {
   const dispatch = useDispatch();
   const router = useRouter();
   const classes = useStyles();

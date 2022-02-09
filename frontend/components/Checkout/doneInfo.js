@@ -88,6 +88,7 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   services_link: {
+    cursor: "pointer",
     fontSize: "16px",
     color: "#9BBDC2",
     textDecoration: "underline",

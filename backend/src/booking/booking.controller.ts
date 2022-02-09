@@ -1,4 +1,4 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { BookingService } from './booking.service';
 
 @Controller('booking')
@@ -12,12 +12,8 @@ export class BookingController {
     return bookings;
   }
 
-  // @Get()
-  // async singleStaffBookings(@Query() query: any) {
-  //   console.log(query);
-
-  //   const bookings = await this.bookingService.singleStaffBookings(query.staff);
-
-  //   return bookings;
-  // }
+  @Post()
+  async postBooking(@Body() data: any) {
+    return this.bookingService.addNewBooking(data);
+  }
 }

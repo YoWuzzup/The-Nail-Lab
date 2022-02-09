@@ -17,7 +17,7 @@ export interface Users extends mongoose.Document {
   name: string;
   email: string;
   phone: number;
-  appointments: Array<string>;
+  appointments: Array<object>;
   confirmed: boolean;
   message: string;
   password: string;

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useSelector } from "react-redux";
 import moment from "moment";
 import { useStyles } from "./doneInfo";
@@ -31,7 +32,11 @@ export default function DoneInfo() {
         </div>
       </div>
 
-      <div className={`${classes.services_link}`}>Check out more services</div>
+      <Link href={"/treatments"}>
+        <div className={`${classes.services_link}`}>
+          Check out more services
+        </div>
+      </Link>
     </div>
   );
 }

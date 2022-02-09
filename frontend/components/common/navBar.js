@@ -53,7 +53,7 @@ export const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       flexBasis: "90%",
       flexFlow: "row wrap",
-      justifyContent: "space-between",
+      justifyContent: "center",
       width: "100%",
     },
   },
@@ -91,7 +91,7 @@ export const useStyles = makeStyles((theme) => ({
     "&:hover": {
       backgroundColor: "unset",
     },
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
       display: "none",
     },
   },
@@ -100,6 +100,9 @@ export const useStyles = makeStyles((theme) => ({
   },
   login: {
     margin: "0 5px",
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
   },
   loginSide: {
     display: "flex",

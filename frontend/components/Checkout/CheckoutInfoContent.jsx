@@ -1,14 +1,30 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
-import { useStyles } from "./checkoutInfoContent";
+
+import { userRegistration, sendBookingData } from "../../api";
 import { BookingInfo } from "../";
-import { InputBase, InputLabel } from "@material-ui/core";
 import { buyerInfo } from "../../Redux/Actions/Buyer";
 
+import { InputBase, InputLabel } from "@material-ui/core";
+import { useStyles } from "./checkoutInfoContent";
+
 export default function CheckoutInfoContent() {
+  const router = useRouter();
   const dispatch = useDispatch();
+  const buyer = useSelector((state) => state.buyerInfo);
+  const checkoutService = useSelector((state) => state.checkoutService);
+  const user = useSelector((state) => state.user);
+  const bookingToSend = {
+    ...checkoutService,
+    user_name: user ? user.name : buyer.name,
+    user_email: user ? user.email : buyer.email,
+    user_phone: user ? user.phone : buyer.phone,
+  };
+
   const classes = useStyles();
+  const [error, setError] = useState("");
   const [formValues, setFormValues] = useState({
     name: "",
     email: "",
@@ -16,14 +32,34 @@ export default function CheckoutInfoContent() {
     message: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
-    dispatch(buyerInfo(formValues));
   };
 
   const handleSubmit = (e) => {
-    console.log('asd');
+    e.preventDefault();
+
+    if (buyer.name && buyer.email) {
+      userRegistration(buyer);
+      setError("");
+      // send booking data
+      sendBookingData(bookingToSend);
+
+      router.push("done");
+    } else {
+      setError("Enter required info");
+    }
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      // send booking data
+      sendBookingData(bookingToSend);
+      router.push("done");
+    }
+
+    dispatch(buyerInfo(formValues));
+  }, [formValues]);
 
   return (
     <div className={`${classes.root}`}>
@@ -37,7 +73,7 @@ export default function CheckoutInfoContent() {
       </div>
 
       <form
-        id="main"
+        id="registrationForm"
         className={`${classes.form_block}`}
         onSubmit={handleSubmit}
       >
@@ -86,10 +122,15 @@ export default function CheckoutInfoContent() {
           className={`${classes.textarea}`}
         />
 
-        <div className={`${classes.extra}`}>* Required Info</div>
+        <div
+          className={`${classes.extra}`}
+          style={{ color: error ? "red" : "#808080" }}
+        >
+          {error || "* Required Info"}
+        </div>
       </form>
 
-      <BookingInfo url={"/checkout/done"} />
+      <BookingInfo form={"registrationForm"} />
     </div>
   );
 }

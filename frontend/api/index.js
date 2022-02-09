@@ -93,3 +93,11 @@ export const userLogOut = async () => {
     console.log(error);
   }
 };
+
+export const sendBookingData = async (data) => {
+  try {
+    return axios.post(`${url}booking`, data);
+  } catch (error) {
+    console.log(error);
+  }
+};

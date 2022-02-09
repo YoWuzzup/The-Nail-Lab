@@ -1,20 +1,19 @@
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import { useStyles } from "./checkoutContent";
 import { Calendar, BookingInfo } from "../";
 
 export default function CheckoutContent() {
+  const router = useRouter();
   const classes = useStyles();
-  const [url, setUrl] = useState("");
-  const user = useSelector((state) => state.user);
+  const checkoutService = useSelector((state) => state.checkoutService);
 
   useEffect(() => {
-    if (Object.keys(user).length !== 0) {
-      setUrl("checkout/done");
-    } else {
-      setUrl("checkout/info");
+    if (!checkoutService.name) {
+      return router.push("/treatments");
     }
   }, []);
 
@@ -28,7 +27,7 @@ export default function CheckoutContent() {
 
       <div className={`${classes.calendar_block}`}>
         <Calendar />
-        <BookingInfo url={`${url}`} />
+        <BookingInfo form={`main`} />
       </div>
     </div>
   );

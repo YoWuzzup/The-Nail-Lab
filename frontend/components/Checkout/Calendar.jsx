@@ -9,11 +9,13 @@ import { getTechnicians } from "../../Redux/Actions/Technicians";
 
 // styles
 import { useStyles, newOverrides } from "./calendar";
+import { useRouter } from "next/router";
 
 const msInHour = 60 * 60 * 1000;
 const providerTimeZone = "Europe/Warsaw";
 
 export default function Calendar() {
+  const router = useRouter();
   const dispatch = useDispatch();
   const data = useSelector((state) => state.checkoutService);
   const staff = useSelector((state) => state.technicians);
@@ -45,6 +47,12 @@ export default function Calendar() {
     dispatch(getBookings("All staff"));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    router.push("checkout/info");
+  };
+
   // range of working day, this one says: from 8:00am to 8:00pm are working.
   // 1t and 2d array accordinly.
   const blockOutPeriods = [
@@ -54,7 +62,7 @@ export default function Calendar() {
 
   return (
     <div className={`${classes.root}`}>
-      <form className={`${classes.form}`} id="main">
+      <form className={`${classes.form}`} id="main" onSubmit={handleSubmit}>
         <label htmlFor="staff" />
         <select
           id="staff"

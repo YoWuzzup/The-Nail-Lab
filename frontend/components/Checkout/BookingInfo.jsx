@@ -1,32 +1,26 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+
 import { useSelector } from "react-redux";
+
 import { useStyles } from "./bookingInfo";
 import { Button } from "@material-ui/core/";
 import moment from "moment";
-import Link from "next/link";
-import { userRegistration } from "../../api";
 
 const ErrorLable = ({ message, names }) => {
   const classes = useStyles();
   return <div className={`${classes[names]}`}>{message}</div>;
 };
 
-export default function BookingInfo({ url }) {
+export default function BookingInfo({ form }) {
+  const router = useRouter();
   const classes = useStyles();
   const [error, setError] = useState(false);
   const checkoutService = useSelector((state) => state.checkoutService);
-  const buyerInfo = useSelector((state) => state.buyerInfo);
+  const user = useSelector((state) => state.user);
   const formatedDate = moment(checkoutService.startDate).format(
     "MMMM D, YYYY hh:mm a"
   );
-
-  const handleClick = (e) => {
-    if (buyerInfo.name || buyerInfo.email) {
-      userRegistration(buyerInfo);
-    } else {
-      return;
-    }
-  };
 
   useEffect(() => {
     if (checkoutService && checkoutService.staff && checkoutService.startDate) {
@@ -51,17 +45,15 @@ export default function BookingInfo({ url }) {
       <div className={`${classes.staff}`}>{checkoutService.staff}</div>
       <div className={`${classes.btn}`}>
         {!error ? (
-          <Link href={`${url}`} underline="none" passHref={true}>
-            <Button
-              onClick={handleClick}
-              variant="outlined"
-              className={`${classes.singleBtn}`}
-              style={{ backgroundColor: "#000", color: "#fff" }}
-              type="submit"
-            >
-              Next
-            </Button>
-          </Link>
+          <Button
+            variant="outlined"
+            form={`${form}`}
+            className={`${classes.singleBtn}`}
+            style={{ backgroundColor: "#000", color: "#fff" }}
+            type="submit"
+          >
+            Next
+          </Button>
         ) : null}
       </div>
 
