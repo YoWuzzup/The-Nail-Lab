@@ -45,7 +45,7 @@ export const useStyles = makeStyles((theme) => ({
     width: "100%",
     display: "flex",
     flexFlow: "row nowrap",
-    gap: '5%',
+    gap: "5%",
     justifyContent: "flex-start",
     [theme.breakpoints.down("sm")]: {
       flexFlow: "column",

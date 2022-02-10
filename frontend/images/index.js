@@ -1,18 +1,17 @@
-export { default as mainPicture } from './Home/mainpicture.webp'
-export { default as mainHand } from './Home/hand.webp'
-export { default as mainMarshmellow } from './Home/marshmellow.webp'
-export { default as pops } from './Home/pops.webp'
-export { default as banana } from './Home/banana.webp'
-export { default as bud } from './Home/bud.webp'
-export { default as icecream } from './Home/icecream.webp'
-export { default as lemons } from './Home/lemons.webp'
-export { default as stem } from './Home/stem.webp'
+export { default as mainPicture } from "./Home/mainpicture.webp";
+export { default as mainHand } from "./Home/hand.webp";
+export { default as mainMarshmellow } from "./Home/marshmellow.webp";
+export { default as pops } from "./Home/pops.webp";
+export { default as banana } from "./Home/banana.webp";
+export { default as bud } from "./Home/bud.webp";
+export { default as icecream } from "./Home/icecream.webp";
+export { default as lemons } from "./Home/lemons.webp";
+export { default as stem } from "./Home/stem.webp";
 
 // Lab
-export { default as hands } from './Lab/hands.webp'
-export { default as apple } from './Lab/apple.webp'
-export { default as mamell } from './Lab/mamell.webp'
-
+export { default as hands } from "./Lab/hands.webp";
+export { default as apple } from "./Lab/apple.webp";
+export { default as mamell } from "./Lab/mamell.webp";
 
 // Contact
-export { default as cottoncandy } from './Contact/cottoncandy.webp'
+export { default as cottoncandy } from "./Contact/cottoncandy.webp";

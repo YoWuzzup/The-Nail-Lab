@@ -11,10 +11,10 @@ export const useStyles = makeStyles((theme) => ({
     alignContent: "flex-start",
     backgroundColor: "#fff4ec",
     padding: "50px 0 100px",
-    [theme.breakpoints.down('xs')]:{
-      flexFlow: 'column',
-      justifyContent: 'flex-start',
-      padding: '20px 0 50px'
+    [theme.breakpoints.down("xs")]: {
+      flexFlow: "column",
+      justifyContent: "flex-start",
+      padding: "20px 0 50px",
     },
   },
   blocks: {
@@ -29,21 +29,21 @@ export const useStyles = makeStyles((theme) => ({
       width: "100%",
       margin: "0 auto 0",
     },
-    [theme.breakpoints.down('lg')]:{
-     flexBasis: '16%' 
+    [theme.breakpoints.down("lg")]: {
+      flexBasis: "16%",
     },
-    [theme.breakpoints.down('md')]:{
-     flexBasis: '22%',
+    [theme.breakpoints.down("md")]: {
+      flexBasis: "22%",
     },
-    [theme.breakpoints.down('sm')]:{
-     flexBasis: '35%',
+    [theme.breakpoints.down("sm")]: {
+      flexBasis: "35%",
     },
-    [theme.breakpoints.down('xs')]:{
-     flexBasis: '100%',
-     width: '220px',
-     border: 'none',
-     margin: '0 0 20px'
-    }
+    [theme.breakpoints.down("xs")]: {
+      flexBasis: "100%",
+      width: "220px",
+      border: "none",
+      margin: "0 0 20px",
+    },
   },
   headers: {
     textTransform: "uppercase",
@@ -51,9 +51,9 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: "18px",
     fontWeight: 400,
     margin: "0 0 15px",
-    [theme.breakpoints.down('xs')]:{
-      margin: '0 0 10px'
-    }
+    [theme.breakpoints.down("xs")]: {
+      margin: "0 0 10px",
+    },
   },
 
   updated: {
@@ -82,6 +82,6 @@ export const useStyles = makeStyles((theme) => ({
     "&:hover": {
       backgroundColor: "#fff",
       color: "#000",
-    }
+    },
   },
 }));

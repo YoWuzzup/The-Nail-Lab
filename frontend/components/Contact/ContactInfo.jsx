@@ -6,7 +6,6 @@ export default function ContactInfo() {
   return (
     <div className={`${classes.root}`}>
       <div className={`${classes.info}`}>
-      
         <div className={`${classes.blocks} ${classes.address}`}>
           <h4 className={`${classes.headers} ${classes.address_header}`}>
             ADDRESS

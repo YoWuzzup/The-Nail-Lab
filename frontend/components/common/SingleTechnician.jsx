@@ -1,5 +1,4 @@
 import { useStyles } from "./singleTechnician";
-import { WithButtonStyles } from "../";
 
 export default function SingleTechnician({ data }) {
   const classes = useStyles();
@@ -29,12 +28,6 @@ export default function SingleTechnician({ data }) {
             );
           })}
         </div>
-
-        {/* can be extra info added if need */}
-        {/* 
-        <div className={`${classes.button}`}>
-          <WithButtonStyles name={"Book Now"} url="treatments" />
-        </div> */}
       </div>
     </div>
   );

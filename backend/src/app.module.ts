@@ -10,7 +10,6 @@ import { ServiceModule } from './service/service.module';
 import { StaffModule } from './staff/staff.module';
 import { BookingModule } from './booking/booking.module';
 import { UsersModule } from './users/users.module';
-import { MailModule } from './mails/mail.module';
 
 dotenv.config();
 

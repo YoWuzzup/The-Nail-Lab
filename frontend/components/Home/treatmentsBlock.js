@@ -36,7 +36,7 @@ export const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down("sm")]: {
       flexFlow: "column",
-      margin: '0'
+      margin: "0",
     },
   },
 }));

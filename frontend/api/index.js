@@ -44,14 +44,6 @@ export const fetchSingleTechnician = async (id) => {
   }
 };
 
-// export const postUser = async (data) => {
-//   try {
-//     return axios.post(`${url}users/`, data);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
 export const postUserConfirmed = async (data) => {
   try {
     return axios.post(`${url}email/confirmation/${data.id}`, data);

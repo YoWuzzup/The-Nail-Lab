@@ -4,7 +4,7 @@ import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handleba
 import { MailService } from './mail.service';
 import { join } from 'path';
 import { MailController } from './mail.controller';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 
 import { UsersSchema } from '../users/users.model';
@@ -14,7 +14,7 @@ import { UsersSchema } from '../users/users.model';
     MongooseModule.forFeature([{ name: 'Users', schema: UsersSchema }]),
     MailerModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: async (config: ConfigService) => ({
+      useFactory: async () => ({
         transport: {
           secure: false,
           service: 'Gmail',

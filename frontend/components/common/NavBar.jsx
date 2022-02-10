@@ -20,7 +20,7 @@ const btns = [
   { name: "contact us", url: "contact" },
 ];
 
-function MainMenuList({ activeMenu, setActiveMenu, navigationButton }) {
+function MainMenuList({ activeMenu, setActiveMenu }) {
   const dispatch = useDispatch();
   const classes = useStyles();
   const router = useRouter();
@@ -71,7 +71,7 @@ function ToggleMenuButton({ activeMenu, handleMenuClick }) {
     <div
       className={classes.menuBtn}
       onClick={handleMenuClick}
-      style={{ zIndex: activeMenu ? 51 : 1 }}
+      style={{ zIndex: activeMenu ? 51 : 1, position: "fixed", right: "5%" }}
     >
       <div
         className={`${classes.bars} ${activeMenu ? classes.bar1_animated : ""}`}

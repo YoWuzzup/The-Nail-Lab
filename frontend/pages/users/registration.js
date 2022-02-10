@@ -83,6 +83,7 @@ export default function technicians() {
             type="text"
             name="password"
             className={`${classes.input}`}
+            style={{ WebkitTextSecurity: "disc", textSecurity: "disc" }}
           />
 
           {/* confirmation password */}
@@ -99,6 +100,7 @@ export default function technicians() {
             type="text"
             name="confirmation_password"
             className={`${classes.input}`}
+            style={{ WebkitTextSecurity: "disc", textSecurity: "disc" }}
           />
 
           <InputLabel htmlFor="phone" className={classes.labels}>

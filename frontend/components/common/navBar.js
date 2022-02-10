@@ -147,6 +147,9 @@ export const useStyles = makeStyles((theme) => ({
     top: 0,
     left: 0,
     zIndex: 50,
+    [theme.breakpoints.up("md")]: {
+      display: "none",
+    },
   },
   activeMenu_main: {
     width: "80%",

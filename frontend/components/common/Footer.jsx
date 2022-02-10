@@ -14,7 +14,7 @@ export default function Footer() {
       submit();
     }
   };
-  
+
   return (
     <div className={classes.root}>
       <div className={`${classes.address} ${classes.blocks}`}>

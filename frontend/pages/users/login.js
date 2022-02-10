@@ -85,6 +85,7 @@ export default function login() {
               type="text"
               name="password"
               className={`${classes.input}`}
+              style={{ WebkitTextSecurity: "disc", textSecurity: "disc" }}
             />
           </div>
           <div className={`${classes.error}`}>{error && error}</div>

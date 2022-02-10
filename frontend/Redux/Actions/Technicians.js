@@ -2,7 +2,7 @@ import { fetchTechnicians, fetchSingleTechnician } from "../../api/index";
 
 export const getTechnicians = () => async (dispatch) => {
   try {
-    const { data } = await fetchTechnicians()
+    const { data } = await fetchTechnicians();
 
     dispatch({ type: "FETCH_TECHNICIANS", payload: data });
   } catch (error) {

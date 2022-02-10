@@ -30,7 +30,6 @@ export default function LabInfo() {
           className={`${classes.image} ${classes.apple}`}
           style={{ backgroundImage: `url(${apple.src})` }}
         />
-        
       </div>
     </>
   );

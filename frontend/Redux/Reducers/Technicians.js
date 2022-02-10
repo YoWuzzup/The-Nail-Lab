@@ -20,6 +20,6 @@ export const singleTechnician = (
     case "FETCH_SINGLE_TECHNICIAN":
       return action.payload;
     default:
-      return {...technician};
+      return { ...technician };
   }
 };

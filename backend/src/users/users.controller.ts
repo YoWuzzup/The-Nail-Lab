@@ -1,17 +1,11 @@
 import { Body, Controller, Get, Post, Res, Req } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UserDataDto } from './userData.dto';
-import { MailService } from 'src/mails/mail.service';
 import { Response, Request } from 'express';
-import { JwtService } from '@nestjs/jwt';
 
 @Controller('users')
 export class UsersController {
-  constructor(
-    private usersService: UsersService,
-    private mailService: MailService,
-    private jwtService: JwtService,
-  ) {}
+  constructor(private usersService: UsersService) {}
 
   @Get()
   async getUsers() {
