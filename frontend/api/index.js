@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = `http://localhost:5000/`;
+const url = `https://the-nail-lab.herokuapp.com/`;
 
 export const fetchService = async (sort) => {
   try {
