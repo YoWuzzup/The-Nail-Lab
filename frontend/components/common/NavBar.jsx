@@ -41,7 +41,11 @@ function MainMenuList({ activeMenu, setActiveMenu }) {
           let newUrl = router.pathname.slice(1);
 
           return (
-            <Link href={`/${item.url}`} key={`${item.name}_${index}`}>
+            <Link
+              href={`/${item.url}`}
+              key={`${item.name}_${index}`}
+              passHref={true}
+            >
               <MenuItem
                 disableGutters={true}
                 className={`${
@@ -129,7 +133,7 @@ function LogOutButton({ activeMenu }) {
 function LGINBTN({ activeMenu }) {
   const classes = useStyles();
   return (
-    <Link href={`/users/login`}>
+    <Link href={`/users/login`} passHref={true}>
       <IconButton
         aria-label="account of current user"
         aria-controls="menu-appbar"

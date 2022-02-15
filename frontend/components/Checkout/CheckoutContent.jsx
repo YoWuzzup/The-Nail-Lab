@@ -15,11 +15,11 @@ export default function CheckoutContent() {
     if (!checkoutService.name) {
       return router.push("/treatments");
     }
-  }, []);
+  });
 
   return (
     <div className={`${classes.root}`}>
-      <Link href={`/treatments`}>
+      <Link href={`/treatments`} passHref={true}>
         <div className={`${classes.backButton}`}>Back</div>
       </Link>
 

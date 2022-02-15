@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }) {
       const parsedUser = localUser ? JSON.parse(localUser) : null;
       dispatch(signInUser(parsedUser));
     }
-  }, []);
+  });
 
   return (
     <>

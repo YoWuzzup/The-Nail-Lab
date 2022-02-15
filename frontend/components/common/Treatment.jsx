@@ -47,7 +47,7 @@ export default function Treatment({ item, length }) {
         {length < 10 ? `0${length}` : length} / <br />
         {itemName}
       </header>
-      <Link href={`/treatments`}>
+      <Link href={`/treatments`} passHref={true}>
         <div
           className={classes.treatment_image}
           style={{ backgroundImage: `url(${item.img})`, cursor: "pointer" }}

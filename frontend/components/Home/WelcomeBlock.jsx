@@ -19,8 +19,8 @@ export default function WelcomeBlock() {
           The Nail Lab
         </h2>
         <p className={`${classes.para} ${classes.info_common}`}>
-          I'm a paragraph.It’s easy. Just click “Edit Text” or double click me
-          to add your own content and make changes to the font.
+          I&apos;m a paragraph.It&apos;s easy. Just click “Edit Text” or double
+          click me to add your own content and make changes to the font.
         </p>
         <p className={`${classes.para} ${classes.info_common}`}>
           This is a great space to write long text about your company and your

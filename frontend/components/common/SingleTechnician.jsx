@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useStyles } from "./singleTechnician";
 
 export default function SingleTechnician({ data }) {

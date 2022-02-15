@@ -59,11 +59,12 @@ export default function CheckoutInfoContent() {
     }
 
     dispatch(buyerInfo(formValues));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formValues]);
 
   return (
     <div className={`${classes.root}`}>
-      <Link href={`/checkout`}>
+      <Link href={`/checkout`} passHref={true}>
         <div className={`${classes.backButton}`}>Back</div>
       </Link>
 

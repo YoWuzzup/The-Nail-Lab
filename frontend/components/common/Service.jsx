@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useStyles } from "./service";
 import Link from "next/link";
 import { WithButtonStyles } from "../index";
@@ -21,7 +22,7 @@ export default function Service({ data }) {
 
   return (
     <div className={`${classes.root}`}>
-      <Link href={`/treatments/${url}`}>
+      <Link href={`/treatments/${url}`} passHref={true}>
         <img
           className={`${classes.image}`}
           alt={`${data.name}`}
@@ -30,7 +31,7 @@ export default function Service({ data }) {
       </Link>
 
       <div className={`${classes.info}`}>
-        <Link href={`/treatments/${url}`}>
+        <Link href={`/treatments/${url}`} passHref={true}>
           <div className={`${classes.name}`}>{data.name}</div>
         </Link>
 

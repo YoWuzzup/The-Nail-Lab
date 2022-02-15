@@ -12,7 +12,7 @@ export default function DoneInfo() {
 
   return (
     <div className={`${classes.doneInfo}`}>
-      <h3 className={`${classes.header}`}>GREAT, YOU'RE BOOKED!</h3>
+      <h3 className={`${classes.header}`}>GREAT, YOU&apos;RE BOOKED!</h3>
       <div className={`${classes.completed}`}>
         A confirmation email is on its way to you.
       </div>
@@ -32,7 +32,7 @@ export default function DoneInfo() {
         </div>
       </div>
 
-      <Link href={"/treatments"}>
+      <Link href={"/treatments"} passHref={true}>
         <div className={`${classes.services_link}`}>
           Check out more services
         </div>

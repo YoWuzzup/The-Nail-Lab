@@ -18,6 +18,7 @@ export default function TreatmentsContent() {
 
   useEffect(() => {
     dispatch(getService(activeSortingButton));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeSortingButton]);
 
   return (

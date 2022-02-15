@@ -11,7 +11,7 @@ export default function TechniciansContent() {
 
   useEffect(() => {
     dispatch(getTechnicians());
-  }, []);
+  });
 
   return (
     <div className={`${classes.root}`}>

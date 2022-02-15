@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
@@ -23,11 +24,12 @@ export default function SingleServicePage({ name }) {
 
   useEffect(() => {
     dispatch(getSingleService(name));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [name]);
 
   return (
     <div className={`${classes.root}`}>
-      <Link href={`/treatments`}>
+      <Link href={`/treatments`} passHref={true}>
         <div className={`${classes.backButton}`}>Back</div>
       </Link>
 

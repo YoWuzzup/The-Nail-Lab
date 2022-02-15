@@ -9,6 +9,7 @@ export default function EmailConfirmation() {
   useEffect(() => {
     if (!router.isReady) return;
     postUserConfirmed({ confirmed: true, id: router.query.userId });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady]);
 
   return (

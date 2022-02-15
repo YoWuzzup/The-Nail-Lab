@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import Head from "next/head";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -48,6 +49,7 @@ export default function login() {
 
   useEffect(() => {
     dispatch(buyerInfo(formValues));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formValues]);
 
   return (
@@ -106,7 +108,7 @@ export default function login() {
           Log in
         </Button>
 
-        <Link href={`/users/registration`}>
+        <Link href={`/users/registration`} passHref={true}>
           <Button
             variant="outlined"
             className={`${classes.singleBtn}`}

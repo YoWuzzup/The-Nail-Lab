@@ -7,7 +7,7 @@ export default function FollowBlock() {
   return (
     <div className={classes.root}>
       <div className={classes.container}>
-        <Link href={`https://www.instagram.com/yowuzzupla/`}>
+        <Link href={`https://www.instagram.com/yowuzzupla/`} passHref={true}>
           <div
             className={`${classes.images} ${classes.icecream}`}
             style={{ backgroundImage: `url(${icecream.src})` }}
@@ -35,7 +35,7 @@ export default function FollowBlock() {
           className={`${classes.images} ${classes.banana}`}
           style={{ backgroundImage: `url(${banana.src})` }}
         />
-        <Link href={`/contact`}>
+        <Link href={`/contact`} passHref={true}>
           <div className={`${classes.images} ${classes.touch}`}>
             <div className={classes.touch_inner}>
               Get in <br /> Touch
