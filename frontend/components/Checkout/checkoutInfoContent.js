@@ -15,6 +15,12 @@ export const useStyles = makeStyles((theme) => ({
       width: "90%",
     },
   },
+  form_inputwrapper: {
+    width: "50%",
+    [theme.breakpoints.down('xs')]: {
+      width: "100%",
+    },
+  },
   backButton: {
     fontSize: "16px",
     color: "#aac2c5",

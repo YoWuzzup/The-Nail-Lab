@@ -66,7 +66,7 @@ export default function login() {
           onSubmit={handleSubmit}
           style={{ width: "50%" }}
         >
-          <div style={{ width: "50%" }}>
+          <div className={classes.form_inputwrapper}>
             <InputLabel htmlFor="email" className={classes.labels} required>
               email
             </InputLabel>
