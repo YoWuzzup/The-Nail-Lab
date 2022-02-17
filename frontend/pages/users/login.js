@@ -30,7 +30,7 @@ export default function login() {
 
     await userLogin(userInfo)
       .then(async (e) => {
-        if (e.status === 404) {
+        if (e.status === 404 || e.status === 400) {
           throw e;
         }
         const { user } = e?.data; // get fetched user
@@ -43,7 +43,7 @@ export default function login() {
       })
       .catch((er) => {
         const { data } = er;
-        setError(data.error);
+        setError(data.message || data.error);
       });
   };
 

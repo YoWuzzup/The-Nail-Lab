@@ -10,7 +10,11 @@ async function bootstrap() {
   const PORT = configService.get('PORT') || 5000;
 
   app.use(cookieParser());
-  app.enableCors({ origin: 'http://localhost:3000', credentials: true });
+  app.enableCors({
+    // origin: 'http://localhost:3000',
+    origin: 'https://the-nail-lab.netlify.app',
+    credentials: true,
+  });
 
   await app.listen(PORT, () =>
     console.log(`The server is running at PORT: ${PORT}`),
